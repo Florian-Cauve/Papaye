@@ -1,4 +1,4 @@
-- initial react dependencies
+initial react dependencies (voir les noms)
 - axios
 - babel-cli
 - body-parser
