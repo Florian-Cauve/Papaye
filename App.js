@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-          <Text>Hello !!</Text>
+          <Text style={{color: '#fff'}}>Hello !!!!!</Text>
           <StatusBar style="auto"/>
         </View>
     );
@@ -16,7 +16,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#6699ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
