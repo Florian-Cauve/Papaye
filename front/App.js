@@ -5,10 +5,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
 
-  state = {
-    name : []
-  }
-
   componentDidMount() {
     axios.get('http://localhost:3000/api/stuff')
       .then(res => {
