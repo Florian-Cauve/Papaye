@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, View } from 'react-native';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends React.Component {
 
@@ -10,8 +12,9 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('localhost:3000/api/stuff')
+    axios.get('http://localhost:8082/api/users/test')
       .then(res => {
+        console.log(res);
         const name = res.data;
         this.setState({name});
       })
@@ -22,7 +25,8 @@ export default class App extends React.Component {
     return (
         <View style={styles.container}>
           <Text style={{color: '#fff'}}>Hello Joris Bitch !!!!!</Text>
-          <Text style={{color: 'red'}}>C'est moi {name} le boss mtn</Text>
+          <Button variant="success">Success</Button>{' '}
+          <Text style={{color: '#fff'}}>C'est moi {name} le boss mtn</Text>
           <StatusBar style="auto"/>
         </View>
     );
