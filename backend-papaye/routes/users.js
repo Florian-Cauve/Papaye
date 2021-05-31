@@ -1,23 +1,51 @@
 const express = require('express');
 const router = express.Router();
+const passwordServices = require('../services/passwordServices')
 
 const User = require('../models/user.model');
 
-// @route GET api/users/test
-router.get('/test', (req, res) => res.send('user route testing!'));
-
-// @route GET api/users/
+// @route GET /users/
 router.get('/', (req, res) => {
   User.find()
     .then(users => res.json(users))
     .catch(err => res.status(404).json({ Error: err, nousersfound: 'No Users found' }));
 });
 
-// @route GET api/users/:id
+// @route GET /users/:id
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(err => res.status(404).json({ nousersfound: 'No Users found' }));
+});
+
+// @route POST /users/register
+router.post('/register', (req, res) => {
+  data = req.body;
+  console.log(data);
+  data.password = passwordServices.hash(data.password);
+  User.create(data)
+    .then(user => res.json({ id: user.id, msg: 'User added successfully' }))
+    .catch(err => res.status(400).json({ error: 'Unable to add this user' }));
+});
+
+// @route POST /users/login
+router.post('/login', (req, res) => {
+  passwordServices.authenticate(req.body)
+    .then(result => {
+      if(result){
+        res.status(202).json({msg: "Login successfully"})
+      }else{
+        res.status(401).json({msg: "Impossible to login, bad username or password"})
+      }
+    })
+    .catch(err => console.log(err))
+})
+
+// @route PUT /users/
+router.put('/', (req, res) => {
+  User.findByIdAndUpdate(req.body.id, req.body)
+    .then(user => res.json({ id: user.id, msg: 'Updated successfully' }))
+    .catch(err => res.status(400).json({ error: 'Unable to update the Database' }));
 });
 
 // @route GET users/:id/receipes
@@ -30,25 +58,11 @@ router.get('/:id/receipes', (req, res) => {
 // @route GET users/:id/exercises
 router.get('/:id/exercises', (req, res) => {
   User.findById(req.params.id).populate("exercises")
-    .then(user => res.json(user))
+    .then(user => res.json(user.exercises))
     .catch(err => res.status(404).json({ nousersfound: 'No Users found' }));
 });
 
-// @route POST api/users // ✔️
-router.post('/register', (req, res) => {
-  User.create(req.body)
-    .then(user => res.json({ id: user.id, msg: 'User added successfully' }))
-    .catch(err => res.status(400).json({ error: 'Unable to add this user' }));
-});
-
-// @route PUT api/users/:id
-router.put('/:id', (req, res) => {
-  User.findByIdAndUpdate(req.params.id, req.body)
-    .then(user => res.json({ id: user.id, msg: 'Updated successfully' }))
-    .catch(err => res.status(400).json({ error: 'Unable to update the Database' }));
-});
-
-// @route DELETE api/users/:id
+// @route DELETE /users/:id
 router.delete('/:id', (req, res) => {
   User.findByIdAndDelete(req.params.id)
     .then(user => res.json({ id: user.id, mgs: 'User entry deleted successfully' }))

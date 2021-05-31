@@ -13,7 +13,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        minlength: 9
+        minlength: 8
     },
     height:{
         type: Number
