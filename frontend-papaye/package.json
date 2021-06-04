@@ -8,6 +8,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fortawesome/react-native-fontawesome": "^0.2.6",
     "axios": "^0.21.1",
     "babel-cli": "^6.26.0",
     "body-parser": "^1.19.0",
@@ -23,8 +29,11 @@
     "react-dom": "16.13.1",
     "react-modal": "^3.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-fontawesome": "^7.0.0",
+    "react-native-svg": "^12.1.1",
     "react-native-web": "^0.16.0",
     "react-router-dom": "^5.2.0",
+    "react-router-native": "^5.2.0",
     "tailwind-rn": "^3.0.1"
   },
   "devDependencies": {
