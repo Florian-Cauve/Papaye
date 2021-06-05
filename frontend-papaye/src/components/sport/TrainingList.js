@@ -3,25 +3,24 @@ import { Text, View, SafeAreaView, Image} from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
 
-import NavBar from "./NavBar.js";
-import Header from "./Header.js";
+import NavBar from "../template/NavBar";
+import Header from "../template/Header";
 
 
-
-const Training = () => {
+const TrainingList = () => {
 
 	const TrainingList = [
 		{
 			id_program: 1,
 			program_name: "Programme jambes intense",
 			description: "Programme axé sur les jambes avec un max de squat.",
-			image: require("../../img/sport_program_id1.jpg"),
+			image: require("../../../img/sport_program_id1.jpg"),
 		},
 		{
 			id_program: 2,
 			program_name: "Cardio jambes",
 			description: "25 minutes de pur cardio (munissez vous d'une corde à sauter).",
-			image: require("../../img/sport_program_id2.jpg"),
+			image: require("../../../img/sport_program_id2.jpg"),
 
 		}
 	]
@@ -38,7 +37,7 @@ const Training = () => {
 					<Text style={tailwind("text-2xl font-bold text-green-900 mb-10 text-center")}>Mes entraînements</Text>
 
 					{/* Add a program part */}
-					<Link style={tailwind("w-11/12 p-2 rounded bg-yellow-100 *")} to="/training">
+					<Link style={tailwind("w-11/12 p-2 rounded bg-yellow-100 *")} to="/training_list">
 
 						<View style={tailwind("flex-row items-center")}>
 							<View style={tailwind("h-10 w-10 rounded-full bg-white")}>
@@ -57,7 +56,7 @@ const Training = () => {
 						{TrainingList.map(training => (
 
 							// Create the program shortcut
-							<Link to="/training" style={tailwind("mt-6 w-full bg-yellow-100 * p-3 rounded")} key={`training_${training.id_program.toString()}`}>
+							<Link to="/open_training" style={tailwind("mt-6 w-full bg-yellow-100 * p-3 rounded")} key={`training_${training.id_program.toString()}`}>
 								
 
 								<View style={tailwind("flex-row w-full")}>
@@ -97,4 +96,4 @@ const Training = () => {
 	)
 }
 
-export default Training;
+export default TrainingList;

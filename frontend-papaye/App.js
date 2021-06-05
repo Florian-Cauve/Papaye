@@ -1,12 +1,26 @@
 import React from "react";
-import HomePage from "./src/components/HomePage.js";
 import { NativeRouter, Route } from "react-router-native";
 
 // Load all components
-import Login from "./src/components/Login.js";
-import SignUp from "./src/components/SignUp.js";
-import News from "./src/components/News.js";
-import Training from "./src/components/Training.js";
+
+// Authentication part
+import HomePage from "./src/components/authentication/HomePage";
+import Login from "./src/components/authentication/Login";
+import SignUp from "./src/components/authentication/SignUp";
+
+// News part
+import News from "./src/components/news/News";
+
+// Search Part
+
+// Sport part
+import TrainingList from "./src/components/sport/TrainingList"; 
+import OpenTraining from "./src/components/sport/OpenTraining";
+
+
+// Food part
+
+// Account part
 
 export default function App() {
   return(
@@ -15,7 +29,8 @@ export default function App() {
       <Route path="/login" component={Login}></Route>
       <Route path="/signup" component={SignUp}></Route>
       <Route path="/news" component={News}></Route>
-      <Route path="/training" component={Training}></Route>
+      <Route path="/training_list" component={TrainingList}></Route>
+      <Route path="/open_training" component={OpenTraining}></Route>
     </NativeRouter>
   )
 }

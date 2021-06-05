@@ -35,7 +35,7 @@ const NavBar = (props) => {
 			</Link>
 
 			{/* Bouton pour la partie sport */}
-			<Link to="/training" style={tailwind("flex-1 items-center py-4")}>
+			<Link to="/training_list" style={tailwind("flex-1 items-center py-4")}>
 				<FontAwesomeIcon icon={ faDumbbell } style={selectedPart.sport} size = { 32 }/>
 			</Link>
 

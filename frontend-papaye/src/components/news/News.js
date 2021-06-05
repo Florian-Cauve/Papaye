@@ -3,8 +3,8 @@ import { Text, View, SafeAreaView, Image} from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
 
-import NavBar from "./NavBar.js";
-import Header from "./Header.js";
+import NavBar from "../template/NavBar";
+import Header from "../template/Header";
 
 
 const News = () => {
