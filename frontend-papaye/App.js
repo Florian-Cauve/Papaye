@@ -25,12 +25,12 @@ import OpenTraining from "./src/components/sport/OpenTraining";
 export default function App() {
   return(
     <NativeRouter>
-      <Route path="/" exact component={HomePage}></Route>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/signup" component={SignUp}></Route>
-      <Route path="/news" component={News}></Route>
-      <Route path="/training_list" component={TrainingList}></Route>
-      <Route path="/open_training" component={OpenTraining}></Route>
+      <Route path="/" exact component={HomePage}/>
+      <Route path="/login" component={Login}/>
+      <Route path="/signup" component={SignUp}/>
+      <Route path="/news" component={News}/>
+      <Route path="/training_list" component={TrainingList}/>
+      <Route path="/open_training" component={OpenTraining}/>
     </NativeRouter>
   )
 }
