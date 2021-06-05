@@ -6,6 +6,7 @@ import { NativeRouter, Route } from "react-router-native";
 import Login from "./src/components/Login.js";
 import SignUp from "./src/components/SignUp.js";
 import News from "./src/components/News.js";
+import Training from "./src/components/Training.js";
 
 export default function App() {
   return(
@@ -14,6 +15,7 @@ export default function App() {
       <Route path="/login" component={Login}></Route>
       <Route path="/signup" component={SignUp}></Route>
       <Route path="/news" component={News}></Route>
+      <Route path="/training" component={Training}></Route>
     </NativeRouter>
   )
 }

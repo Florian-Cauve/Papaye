@@ -19,7 +19,7 @@ const News = () => {
 				</View>
 			
 			{/* Inclure la barre de navigation */}
-			<NavBar/>
+			<NavBar part="home"/>
 
 		</SafeAreaView>
 	)
