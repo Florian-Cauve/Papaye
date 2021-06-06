@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome, faSearch, faDumbbell, faAppleAlt, faUser } from '@fortawesome/free-solid-svg-icons'
 
 
-
 const NavBar = (props) => {
 
 	const selectedPart = {

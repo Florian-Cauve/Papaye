@@ -12,8 +12,8 @@ const TrainingList = () => {
 	const TrainingList = [
 		{
 			id_program: 1,
-			program_name: "Programme jambes intense",
-			description: "Programme axé sur les jambes avec un max de squat.",
+			program_name: "Programme jambes intense", //Titre avec char limité
+			description: "Programme axé sur les jambes avec un max de squat.", // 50 à 60 char
 			image: require("../../../img/sport_program_id1.jpg"),
 		},
 		{
@@ -21,7 +21,6 @@ const TrainingList = () => {
 			program_name: "Cardio jambes",
 			description: "25 minutes de pur cardio (munissez vous d'une corde à sauter).",
 			image: require("../../../img/sport_program_id2.jpg"),
-
 		}
 	]
 
@@ -37,7 +36,7 @@ const TrainingList = () => {
 					<Text style={tailwind("text-2xl font-bold text-green-900 mb-10 text-center")}>Mes entraînements</Text>
 
 					{/* Add a program part */}
-					<Link style={tailwind("w-11/12 p-2 rounded bg-yellow-100 *")} to="/training_list">
+					<Link style={tailwind("w-11/12 p-2 rounded-lg bg-yellow-100 *")} to="/training_list">
 
 						<View style={tailwind("flex-row items-center")}>
 							<View style={tailwind("h-10 w-10 rounded-full bg-white")}>
@@ -56,7 +55,7 @@ const TrainingList = () => {
 						{TrainingList.map(training => (
 
 							// Create the program shortcut
-							<Link to="/open_training" style={tailwind("mt-6 w-full bg-yellow-100 * p-3 rounded")} key={`training_${training.id_program.toString()}`}>
+							<Link to={`/open_training/${training.id_program.toString()}`} style={tailwind("mt-6 w-full bg-yellow-100 * p-3 rounded-lg")} key={`training_${training.id_program.toString()}`}>
 								
 
 								<View style={tailwind("flex-row w-full")}>

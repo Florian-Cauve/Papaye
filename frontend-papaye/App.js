@@ -16,7 +16,7 @@ import News from "./src/components/news/News";
 // Sport part
 import TrainingList from "./src/components/sport/TrainingList"; 
 import OpenTraining from "./src/components/sport/OpenTraining";
-
+import DoExercise from "./src/components/sport/DoExercise";
 
 // Food part
 
@@ -30,8 +30,8 @@ export default function App() {
       <Route path="/signup" component={SignUp}/>
       <Route path="/news" component={News}/>
       <Route path="/training_list" component={TrainingList}/>
-      <Route path="/open_training" component={OpenTraining}/>
+      <Route path="/open_training/:id_program" component={OpenTraining}/>
+      <Route path="/do_exercise" component={DoExercise}/>
     </NativeRouter>
   )
 }
-

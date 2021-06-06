@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router";
 import { Text, View, SafeAreaView, Image, ScrollView } from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
@@ -13,6 +14,10 @@ import Header from "../template/Header";
 
 const OpenTraining = () => {
 
+	const Params = useParams();
+
+	console.log(Params.id_program) // Recuperer le training
+
 	const training = {
 
 		id_program: 1,
@@ -25,19 +30,19 @@ const OpenTraining = () => {
 				id_exercise : 1,
 				exercise_name : "Squat",
 				image : require("../../../img/sport_exercise_id1.jpg"),
-				time : "30sec"
+				time : 30
 			},
 			{
 				id_exercise : 2,
 				exercise_name : "Fentes",
 				image : require("../../../img/sport_exercise_id2.jpeg"),
-				time : "30sec"
+				time : 30
 			},
 			{
 				id_exercise : 3,
 				exercise_name : "Jumping jack",
 				image : require("../../../img/sport_exercise_id1.jpg"),
-				time : "30sec"
+				time : 30
 			},
 		]
 
@@ -70,7 +75,7 @@ const OpenTraining = () => {
 					<Text style={tailwind("font-bold mb-10")}>{training.program_name}</Text>
 
 					{/* Start Button */}
-					<Link to="/" style={tailwind("p-2 bg-green-900 rounded-lg mb-4")}>
+					<Link to="/do_exercise" style={tailwind("p-2 bg-green-900 rounded-lg mb-4")}>
 						<Text style={tailwind("text-white text-xl")}>Commencer</Text>
 					</Link>
 
@@ -100,11 +105,11 @@ const OpenTraining = () => {
 						
 						{/* List all exercises */}
 						{training.exercises.map(exercise => (
-							<Link to="/open_training" key={`exercise_${exercise.id_exercise}`} style={tailwind("w-11/12 bg-white p-2 rounded-lg mt-4")}>
+							<View key={`exercise_${exercise.id_exercise}`} style={tailwind("w-11/12 bg-white p-2 rounded-lg mt-4")}>
 								<View style={tailwind("flex-row")}>
 									{/* Image of the exercise */}
 									<Image
-										style={tailwind("w-20 h-20 rounded-lg")}
+										style={tailwind("w-20 h-20 rounded-full")}
 										source={exercise.image}/>
 									{/* Title and duration of the exercise */}
 									<View style={tailwind("pl-4")}>
@@ -116,7 +121,7 @@ const OpenTraining = () => {
 										
 									</View>
 								</View>
-							</Link>
+							</View>
 						))}
 
 					</View>
