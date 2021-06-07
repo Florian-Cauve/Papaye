@@ -39,7 +39,7 @@ export default class UserHelpers{
      * @param userPassword
      * @returns {Promise<AxiosResponse<any>>}
      */
-    authenticate(userUsername, userPassword){
+    static authenticate(userUsername, userPassword){
         return axios.post(USER_API_BASE_URL + "login", {username:userUsername, password:userPassword});
     }
 
