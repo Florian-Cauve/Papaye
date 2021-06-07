@@ -23,6 +23,7 @@ import DoExercise from "./src/components/sport/DoExercise";
 // Account part
 
 export default function App() {
+
   return(
     <NativeRouter>
       <Route path="/" exact component={HomePage}/>
