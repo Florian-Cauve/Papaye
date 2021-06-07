@@ -12,7 +12,7 @@ const Header = () => {
 			{/* logo de Papaye */}
 			<Image
 	          style={tailwind("h-10 w-5")}
-	          source={require("../../img/papaye_logo.png")}/>
+	          source={require("../../../img/papaye_logo.png")}/>
 				
 			{/* Nom de l'appli */}
 			<Text style={tailwind("text-black font-bold text-2xl ml-4")}>PAPAYE</Text>
