@@ -16,8 +16,6 @@ const OpenTraining = () => {
 
 	const Params = useParams();
 
-	console.log(Params.id_program) // Recuperer le training
-
 	const training = {
 
 		id_program: 1,
@@ -75,7 +73,7 @@ const OpenTraining = () => {
 					<Text style={tailwind("font-bold mb-10")}>{training.program_name}</Text>
 
 					{/* Start Button */}
-					<Link to="/do_exercise" style={tailwind("p-2 bg-green-900 rounded-lg mb-4")}>
+					<Link to={`/do_exercise/${Params.id_program}`} style={tailwind("p-2 bg-green-900 rounded-lg mb-4")}>
 						<Text style={tailwind("text-white text-xl")}>Commencer</Text>
 					</Link>
 

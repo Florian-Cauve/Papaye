@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { Text, View, SafeAreaView, Image, ScrollView, TouchableHighlight } from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
@@ -10,8 +11,9 @@ import NavBar from "../template/NavBar";
 import Header from "../template/Header";
 
 
-
 const DoExercise = () => {
+
+	const Params = useParams();
 
 	// Exercise List
 	const exercise = [
@@ -75,7 +77,6 @@ const DoExercise = () => {
 	useEffect(() => {
 		clearAllTimeout()
 		if (isChronometerLaunch){
-			console.log("Exercice launched !")
 			launchChronometer()
 		}
 	}, [currentExercise])
@@ -173,10 +174,6 @@ const DoExercise = () => {
 		
 	}
 
-	function TextToSeconds(seconds){
-		return time_remaining = parseInt(timer.hours) * 3600 + parseInt(timer.minutes) * 60 + parseInt(timer.seconds)
-	}
-
 	function clearAllTimeout(){
 
 		for (timeOut of ArrayTimeOut){
@@ -199,7 +196,7 @@ const DoExercise = () => {
 				<View style={tailwind("flex-1 w-full items-center mb-32")}>
 					
 					{/* Return button */}
-					<Link to="/open_training" style={tailwind("w-11/12 mb-6")}>
+					<Link to={`/open_training/${Params.id_program}`} style={tailwind("w-11/12 mb-6")}>
 						<View style={tailwind("flex-row items-center")}>
 							<FontAwesomeIcon icon={ faAngleLeft }/>
 							<Text>Retour</Text>
@@ -226,7 +223,7 @@ const DoExercise = () => {
 							
 							{/* Previous exercise */}
 							<TouchableHighlight
-								style={tailwind("p-2 bg-green-900 rounded")}
+								style={tailwind("p-2 bg-green-900 rounded-lg")}
 								onPress={() => {
 									ChangeExercise(-1)
 								}}>
@@ -235,7 +232,7 @@ const DoExercise = () => {
 
 							{/* Play/Pause the exercise */}
 							<TouchableHighlight
-								style={tailwind("p-2 bg-green-900 rounded")}
+								style={tailwind("p-2 bg-green-900 rounded-lg")}
 								onPress={() => {
 									if(isChronometerLaunch){
 										changeChronometerState(false)
@@ -251,7 +248,7 @@ const DoExercise = () => {
 
 							{/* Next Exercise */}
 							<TouchableHighlight
-								style={tailwind("p-2 bg-green-900 rounded")}
+								style={tailwind("p-2 bg-green-900 rounded-lg")}
 								onPress={() => {
 									ChangeExercise(1)
 								}}>
@@ -263,7 +260,7 @@ const DoExercise = () => {
 						{/* Stop the program */}
 						<Link
 							style={tailwind("p-2 bg-red-500 rounded")}
-							to="/open_training">
+							to={`/open_training/${Params.id_program}`}>
 							<Text style={tailwind("text-xl")}>Arrêter</Text>
 						</Link>
 
