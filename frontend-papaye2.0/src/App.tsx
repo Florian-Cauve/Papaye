@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import HomePage from "./components/HomePage/HomePage";
+import Login from "./components/Authentication/Login";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   const [userConnected, setUserConnected] = useState(false)
@@ -22,8 +24,8 @@ function App() {
         {!userConnected ? (
             <Switch>
               <Route path="/" exact component={HomePage}/>
-              {/*<Route path="/login" component={Login}/>*/}
-              {/*<Route path="/signup" component={SignUp}/>*/}
+              <Route path="/login" component={Login}/>
+              <Route path="/signup" component={SignUp}/>
             </Switch>
         ) : (
         <Switch>
