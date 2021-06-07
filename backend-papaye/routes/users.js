@@ -33,11 +33,7 @@ router.post('/login', (req, res) => {
   console.log(req)
   passwordServices.authenticate(req.body)
     .then(user => {
-      if(user === {}){
-        res.status(401)
-      }else{
-        res.status(202).json(user)
-      }
+        res.status(202).json({id: user.id, msg: "User successfully logged in"})
     })
     .catch(err => console.log(err))
 })

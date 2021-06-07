@@ -16,3 +16,6 @@ router.get('/:id', (req, res) => {
         .then(training => res.json(training))
         .catch(err => res.status(404).json({ notrainingsfound: "No trainings found" }))
 })
+
+// @route POST /trainings
+router.post()

@@ -1,23 +1,23 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Text, View, SafeAreaView, Image, TextInput } from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
-import UserHelpers, {getAllUsers} from "../../helpers/UserHelpers";
+import { authenticate } from "../../helpers/UserHelpers";
 
 const Login = () => {
-    const [username, setUserEmail] = useState('')
-    const [password, setPassword] = useState('')
+  const [username, setUserEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-    const auth = () => {
-        if(username !== "" && password !== ""){
-            // UserHelpers.authenticate(username, password).then(res => {
-            //     // console.log(res)
-            // }).catch(err => {
-            //     console.log(err)
-            // })
-            getAllUsers().then(r => console.log(r))
-        }
+  const auth = () => {
+    if (username !== "" && password !== "") {
+      // UserHelpers.authenticate(username, password).then(res => {
+      //     // console.log(res)
+      // }).catch(err => {
+      //     console.log(err)
+      // })
+      authenticate().then(r => console.log(r))
     }
+  }
 
   return (
     <SafeAreaView style={tailwind("flex-1 justify-center items-center")}>
@@ -37,13 +37,13 @@ const Login = () => {
           style={tailwind("bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *")}
           type="text"
           onChangeText={e => setUserEmail(e)}
-          placeholder="Username"/>
+          placeholder="Username" />
         <TextInput
           style={tailwind("bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *")}
           secureTextEntry={true}
           type="text"
           onChangeText={e => setPassword(e)}
-          placeholder="Password"/>
+          placeholder="Password" />
         <Link onPress={auth} style={tailwind("bg-green-900 w-3/5 rounded-full mt-10 p-2 *")}>
           <Text style={tailwind("text-white text-center text-2xl")}>Connexion</Text>
         </Link>
