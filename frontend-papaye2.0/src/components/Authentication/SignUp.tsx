@@ -11,7 +11,7 @@ const SignUp = () => {
       <View style={tailwind("w-3/5 h-2/5 items-center")}>
         <Image
           style={tailwind("h-4/5 w-4/5")}
-          source={require("../../../img/papaye_logo.png")}
+          source={require("../../../public/papaye_logo.png")}
         />
         <Text style={tailwind("text-black font-bold text-4xl")}>PAPAYE</Text>
       </View>
