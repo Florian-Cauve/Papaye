@@ -14,7 +14,7 @@ const Login = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen  justify-center items-center">
+    <div className="flex flex-col h-screen justify-center items-center">
 
       {/* Partie avec le logo et le nom */}
       <div className="flex flex-col w-3/5 h-2/5 items-center">
