@@ -21,7 +21,7 @@ const NavBar = (props) => {
 	return (
 
 		// Barre de navigation de l'appli
-		<SafeAreaView style={tailwind("w-full flex-row justify-between absolute bottom-0 absolute border-t-2 border-green-900 bg-white")}>
+		<SafeAreaView style={tailwind("w-full flex-row justify-between absolute bottom-0 border-t-2 border-green-900 bg-white")}>
 
 			{/* Bouton home/ fil d'actualité */}
 			<Link to="/news" style={tailwind("flex-1 items-center py-4")}>

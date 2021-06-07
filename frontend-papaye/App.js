@@ -23,6 +23,7 @@ import DoExercise from "./src/components/sport/DoExercise";
 // Account part
 
 export default function App() {
+
   return(
     <NativeRouter>
       <Route path="/" exact component={HomePage}/>
@@ -31,7 +32,7 @@ export default function App() {
       <Route path="/news" component={News}/>
       <Route path="/training_list" component={TrainingList}/>
       <Route path="/open_training/:id_program" component={OpenTraining}/>
-      <Route path="/do_exercise" component={DoExercise}/>
+      <Route path="/do_exercise/:id_program" component={DoExercise}/>
     </NativeRouter>
   )
 }
