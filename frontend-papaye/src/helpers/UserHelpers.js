@@ -37,7 +37,7 @@ export default class UserHelpers{
     /***
      * @param userUsername
      * @param userPassword
-     * @returns {Promise<AxiosResponse<any>>}
+     * @returns {Promise<any>}
      */
     static authenticate(userUsername, userPassword){
         return axios.post(USER_API_BASE_URL + "login", {username:userUsername, password:userPassword});
@@ -48,7 +48,7 @@ export default class UserHelpers{
      * @param password
      * @param height
      * @param weight
-     * @returns {Promise<AxiosResponse<any>>}
+     * @returns {Promise<any>}
      */
     register(username, password, height, weight){
         return axios.post(USER_API_BASE_URL + "register", {username: username, password: password, height: height, weight: weight});

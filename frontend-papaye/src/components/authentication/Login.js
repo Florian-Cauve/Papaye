@@ -11,7 +11,8 @@ const Login = () => {
     const auth = () => {
         if(username !== "" && password !== ""){
             UserHelpers.authenticate(username, password).then(res => {
-                console.log(res)
+                console.log("a")
+                console.log(res.data)
             })
         }
     }
