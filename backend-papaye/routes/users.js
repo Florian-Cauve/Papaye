@@ -30,6 +30,7 @@ router.post('/register', (req, res) => {
 
 // @route POST /users/login
 router.post('/login', (req, res) => {
+  console.log(req)
   passwordServices.authenticate(req.body)
     .then(user => {
       if(user === {}){

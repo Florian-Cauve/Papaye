@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Text, View, SafeAreaView, Image, TextInput } from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
-import UserHelpers from "../../helpers/UserHelpers";
+import UserHelpers, {getAllUsers} from "../../helpers/UserHelpers";
 
 const Login = () => {
     const [username, setUserEmail] = useState('')
@@ -10,10 +10,12 @@ const Login = () => {
 
     const auth = () => {
         if(username !== "" && password !== ""){
-            UserHelpers.authenticate(username, password).then(res => {
-                console.log("a")
-                console.log(res.data)
-            })
+            // UserHelpers.authenticate(username, password).then(res => {
+            //     // console.log(res)
+            // }).catch(err => {
+            //     console.log(err)
+            // })
+            getAllUsers().then(r => console.log(r))
         }
     }
 

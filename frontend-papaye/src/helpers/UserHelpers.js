@@ -6,9 +6,6 @@ export default class UserHelpers{
     /***
      * @returns {User[]}
      */
-    getAllUsers(){
-        return axios.get(USER_API_BASE_URL);
-    }
 
     /***
      * @param userId
@@ -34,13 +31,17 @@ export default class UserHelpers{
         return axios.get(USER_API_BASE_URL + userId + "/exercises")
     }
 
-    /***
-     * @param userUsername
-     * @param userPassword
-     * @returns {Promise<any>}
-     */
-    static authenticate(userUsername, userPassword){
-        return axios.post(USER_API_BASE_URL + "login", {username:userUsername, password:userPassword});
+    static async authenticate(userUsername, userPassword) {
+        let user = {};
+        await axios
+            .post(USER_API_BASE_URL + "login", {username: userUsername, password: userPassword})
+            .then(res => {
+                console.log(res)
+                user = res.data
+            }).catch(err => {
+                console.log(err)
+            });
+        return user
     }
 
     /***
@@ -74,3 +75,17 @@ export default class UserHelpers{
         return axios.delete(USER_API_BASE_URL + userId)
     }
 }
+
+export const getAllUsers = async () => {
+    let user = []
+    await axios
+        .get(USER_API_BASE_URL)
+        .then(res => {
+        console.log(res)
+        user = res.data
+    }).catch(err => {
+        console.log(err)
+    });
+    return user
+}
+
