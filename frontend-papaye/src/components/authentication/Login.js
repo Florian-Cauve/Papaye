@@ -1,9 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import { Text, View, SafeAreaView, Image, TextInput } from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
+import UserHelpers from "../helpers/UserHelpers";
 
 const Login = () => {
+    const [username, setUserEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const auth = () => {
+        if(username !== "" && password !== ""){
+            UserHelpers.prototype.authenticate(username, password).then(res => {
+                console.log(res)
+            })
+        }
+    }
+
   return (
     <SafeAreaView style={tailwind("flex-1 justify-center items-center")}>
 
@@ -18,16 +30,18 @@ const Login = () => {
 
       {/* Partie avec le carré pour les éléments de connexion (username et password) */}
       <View style={tailwind("bg-yellow-100 w-4/5 rounded-lg p-5 items-center")}>
-        <TextInput 
+        <TextInput
           style={tailwind("bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *")}
           type="text"
+          onChangeText={e => setUserEmail(e)}
           placeholder="Username"/>
-        <TextInput 
+        <TextInput
           style={tailwind("bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *")}
           secureTextEntry={true}
           type="text"
+          onChangeText={e => setPassword(e)}
           placeholder="Password"/>
-        <Link to="/news" style={tailwind("bg-green-900 w-3/5 rounded-full mt-10 p-2 *")}>
+        <Link onPress={auth} style={tailwind("bg-green-900 w-3/5 rounded-full mt-10 p-2 *")}>
           <Text style={tailwind("text-white text-center text-2xl")}>Connexion</Text>
         </Link>
       </View>

@@ -1,4 +1,6 @@
 import React from "react";
+import React, {useEffect, useState} from "react";
+import HomePage from "./src/components/HomePage.js";
 import { NativeRouter, Route } from "react-router-native";
 
 // Load all components
@@ -23,6 +25,7 @@ import DoExercise from "./src/components/sport/DoExercise";
 // Account part
 
 export default function App() {
+
   return(
     <NativeRouter>
       <Route path="/" exact component={HomePage}/>
