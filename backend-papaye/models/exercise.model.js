@@ -14,13 +14,9 @@ const ExerciseSchema = new Schema({
         type: Number,
         required: true,
     },
-    date:{
-        type: Date,
-        required: true
-    },
-    owner:{
+    training:{
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Training"
     }
 }, {
     timestamps: true,

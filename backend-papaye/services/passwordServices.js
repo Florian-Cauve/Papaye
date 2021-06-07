@@ -8,12 +8,16 @@ const hash = (password) => {
 const authenticate = async (loginData) => {
     const username = loginData.username;
     const password = loginData.password
-    var login = false
+    var userLogged = {};
     await User.findOne({ username })
-        .then((user) => {login = bcrypt.compareSync(password, user.password)})
+        .then((user) => {
+            if(bcrypt.compareSync(password, user.password)){
+                userLogged = user;
+            }
+        })
         .catch(err => console.log(err))
 
-    return login;
+    return userLogged;
 }
 
 module.exports = {

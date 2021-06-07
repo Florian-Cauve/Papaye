@@ -31,11 +31,11 @@ router.post('/register', (req, res) => {
 // @route POST /users/login
 router.post('/login', (req, res) => {
   passwordServices.authenticate(req.body)
-    .then(result => {
-      if(result){
-        res.status(202).json({msg: "Login successfully"})
+    .then(user => {
+      if(user === {}){
+        res.status(401)
       }else{
-        res.status(401).json({msg: "Impossible to login, bad username or password"})
+        res.status(202).json(user)
       }
     })
     .catch(err => console.log(err))
