@@ -1,3 +1,4 @@
+import React from "react";
 import {Link} from "react-router-dom";
 
 const HomePage = () => {
@@ -7,6 +8,7 @@ const HomePage = () => {
       {/* Partie avec le logo et le nom */}
       <div className="flex flex-col w-3/5 h-2/5 items-center">
         <img
+            alt=""
             className="h-4/5 w-4/5"
             src={"papaye_logo.png"}/>
         <div className="text-black font-bold text-4xl">PAPAYE</div>

@@ -21,7 +21,6 @@ router.get('/:id', (req, res) => {
 // @route POST /users/register
 router.post('/register', (req, res) => {
   data = req.body;
-  console.log(data);
   data.password = passwordServices.hash(data.password);
   User.create(data)
     .then(user => res.json({ id: user.id, msg: 'User added successfully' }))

@@ -1,15 +1,21 @@
 import React from "react";
 import {useState} from "react";
-import { Link } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { authenticate } from "../../helpers/UserHelpers";
 
 const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  let history = useHistory();
 
   const auth = () => {
     if (username !== "" && password !== "") {
-
+      authenticate(username, password).then(res => {
+        localStorage.setItem("id", res.data.id.toString());
+        history.push("/news")
+      }).catch(err => {
+        console.error("Erreur requete " + err.message +" "+ err.stack)
+      })
     }
   }
 

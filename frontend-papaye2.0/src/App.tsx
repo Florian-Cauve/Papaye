@@ -4,15 +4,12 @@ import './App.css';
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Authentication/Login";
 import SignUp from "./components/SignUp/SignUp";
+import News from "./components/News/News";
 
 function App() {
   const [userConnected, setUserConnected] = useState(false)
 
   useEffect(() => {
-      // authenticate("Fathi", "Rule 34").then(res =>{
-      //     console.log(res.data)
-      // })
-      localStorage.removeItem("id")  // nobody connected
 
       const currentUserId:number|null  = (localStorage.getItem("id") !== null) ? Number(localStorage.getItem("id")) : null ;
       setUserConnected(currentUserId !== null);
@@ -29,7 +26,7 @@ function App() {
             </Switch>
         ) : (
         <Switch>
-            {/*<Route path="/news" component={News}/>*/}
+            <Route path="/news" component={News}/>
             {/*<Route path="/training_list" component={TrainingList}/>*/}
             {/*<Route path="/open_training/:id_program" component={OpenTraining}/>*/}
             {/*<Route path="/do_exercise/:id_program" component={DoExercise}/>*/}

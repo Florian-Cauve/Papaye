@@ -9,7 +9,7 @@ import Login from "./src/components/authentication/Login";
 import SignUp from "./src/components/authentication/SignUp";
 
 // News part
-import News from "./src/components/news/News";
+import News from "../frontend-papaye2.0/src/components/News/News";
 
 // Search Part
 

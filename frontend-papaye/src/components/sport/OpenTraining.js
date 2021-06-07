@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faAngleLeft, faShareAlt, faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
 import { faClock, faEdit } from '@fortawesome/free-regular-svg-icons'
 
-import NavBar from "../template/NavBar";
-import Header from "../template/Header";
+import NavBar from "../../../../frontend-papaye2.0/src/components/NavBar/NavBar";
+import Header from "../../../../frontend-papaye2.0/src/components/Header/Header";
 
 
 

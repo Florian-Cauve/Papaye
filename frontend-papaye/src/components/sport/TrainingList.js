@@ -3,8 +3,8 @@ import { Text, View, SafeAreaView, Image} from "react-native";
 import tailwind from "tailwind-rn";
 import { Link } from "react-router-native";
 
-import NavBar from "../template/NavBar";
-import Header from "../template/Header";
+import NavBar from "../../../../frontend-papaye2.0/src/components/NavBar/NavBar";
+import Header from "../../../../frontend-papaye2.0/src/components/Header/Header";
 
 
 const TrainingList = () => {
