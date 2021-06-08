@@ -16,7 +16,11 @@ const ExerciseSchema = new Schema({
     },
     training:{
         type: Schema.Types.ObjectId,
-        ref: "Training"
+        ref: "Training",
+        required: true,
+    },
+    pathImage:{
+        type: String,
     }
 }, {
     timestamps: true,

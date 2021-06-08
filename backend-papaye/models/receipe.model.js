@@ -10,10 +10,20 @@ const ReceipeSchema = new Schema({
         type: String,
         required: true,
     },
+    duration: {
+        type: Number
+    },
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    ingredients: [{
+        name: { type: String },
+        quantity: { type: String }
+    }],
+    imageURL: {
+        type: String
+    } 
 }, {
     timestamps: true,
 });

@@ -23,6 +23,9 @@ const TrainingSchema = new Schema({
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User"
+    },
+    pathImage:{
+        type: String
     }
 }, {
     timestamps: true,

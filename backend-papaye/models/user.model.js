@@ -21,6 +21,9 @@ const UserSchema = new Schema({
     weight:{
         type: Number
     },
+    imageURL: {
+        type: String
+    },
     receipes: [
         {
             type: Schema.Types.ObjectId,
