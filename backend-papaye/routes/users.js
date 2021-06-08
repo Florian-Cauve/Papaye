@@ -3,6 +3,10 @@ const router = express.Router();
 const passwordServices = require('../services/passwordServices')
 
 const User = require('../models/user.model');
+const Receipe = require('../models/receipe.model');
+const Training = require('../models/training.model');
+const Exercise = require('../models/exercise.model');
+
 
 // @route GET /users/
 router.get('/', (req, res) => {
@@ -42,7 +46,13 @@ router.get('/:id/trainings', (req, res) => {
 // @route DELETE /users/:id
 router.delete('/:id', (req, res) => {
   User.findByIdAndDelete(req.params.id)
-    .then(user => res.json({ msg: 'User entry deleted successfully' }))
+    .then(user => {
+      user.trainings.map(training => Training.findByIdAndDelete(training)
+          .then(training => {
+            training.exercises.map(exercise => Exercise.findByIdAndDelete(exercise))
+          }))
+      user.receipes.map(receipe => Receipe.findByIdAndDelete(receipe))
+    })
     .catch(err => res.status(404).json({ error: 'No such a user' }));
 });
 

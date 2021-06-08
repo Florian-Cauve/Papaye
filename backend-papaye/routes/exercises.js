@@ -15,6 +15,7 @@ router.post('/', (req, res) => {
 // @route DELETE /exercises/:id
 router.delete('/:id', (req, res) => {
     Exercise.findByIdAndDelete(req.params.id)
+        .then(exercise => Training.findByIdAndUpdate(exercise.training, { $pull: { exercises: exercise.id }}))
         .then(exercise => res.json({ mgs: 'Exercise entry deleted successfully' }))
         .catch(err => res.status(404).json({ error: 'No such a exercise' }));
 });

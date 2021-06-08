@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {register} from "../../helpers/UserHelpers";
 import {useHistory} from "react-router-dom";
+import {register} from "../../helpers/AuthHelpers";
 
 const SignUp = () => {
     const [username, setUsername] = useState('');

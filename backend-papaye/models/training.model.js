@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TrainingSchema = new Schema({
-    program_name: {
+    programName: {
         type: String,
         required: true,
         trim: true,
-        minlength: 20
+        maxlength: 20
     },
     description:{
         type: String,
         required: true,
         trim: true,
-        minlength: 50
+        maxlength: 50
     },
     exercises: [
         {
