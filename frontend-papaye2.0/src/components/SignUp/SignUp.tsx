@@ -1,8 +1,29 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useState} from "react";
+import {register} from "../../helpers/UserHelpers";
+import {useHistory} from "react-router-dom";
 
 const SignUp = () => {
-  return (
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    let history = useHistory();
+
+
+    const confirmRegister = () => {
+        if(username !== "" && password !== "" && confirmPassword !== ""){
+            if(password === confirmPassword){
+                register(username, password, 0, 0).then(r => {
+                    history.push("/");
+                })
+            }else {
+                alert("You didn't confirm your password !");
+            }
+        }else{
+            alert("Your filled data are incorrect");
+        }
+    }
+
+    return (
     <div className="flex flex-col h-screen flex-1 justify-center items-center">
 
       {/* Partie avec le logo et le nom */}
@@ -20,22 +41,21 @@ const SignUp = () => {
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
+          onChange={event => setUsername(event.target.value)}
           placeholder="Username"/>
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
-          type="text"
-          placeholder="Email"/>
-        <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="password"
+          onChange={event => setPassword(event.target.value)}
           placeholder="Password"/>
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="password"
+          onChange={event => setConfirmPassword(event.target.value)}
           placeholder="Confirm Password"/>
-        <Link to="/" className="bg-green-900 w-3/5 rounded-full mt-10 p-2 *">
+        <div onClick={confirmRegister} className="bg-green-900 w-3/5 rounded-full mt-10 p-2 *">
           <div className="text-white text-center text-2xl">Inscription</div>
-        </Link>
+        </div>
       </div>
     </div>
   )
