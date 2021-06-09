@@ -22,3 +22,20 @@ export interface Receipe {
     },
     imageURL: string
 }
+
+export interface CreateTraining {
+    porgramName: string,
+    description: string,
+    owner: string,
+    updatedAt: string,
+    pathImage?: string
+}
+
+export interface Training {
+    id: string,
+    porgramName: string,
+    description: string,
+    owner: string,
+    updatedAt: string,
+    pathImage?: string
+}

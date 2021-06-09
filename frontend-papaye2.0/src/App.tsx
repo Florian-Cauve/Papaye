@@ -5,7 +5,8 @@ import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Authentication/Login";
 import SignUp from "./components/Authentication/SignUp";
 import News from "./components/News/News";
-import MyReceipes from './components/Receipes/MyReceipes'
+import MyReceipes from './components/Receipes/MyReceipes';
+import MyTrainings from "./components/Trainings/MyTrainings";
 
 function App() {
   const [userConnected, setUserConnected] = useState<boolean>(false)
@@ -29,7 +30,7 @@ function App() {
         <Switch>
             <Route path="/news" component={News}/>
             <Route path="/receipes" component={MyReceipes}/>
-            {/*<Route path="/training_list" component={TrainingList}/>*/}
+            <Route path="/trainingsList" component={MyTrainings}/>
             {/*<Route path="/open_training/:id_program" component={OpenTraining}/>*/}
             {/*<Route path="/do_exercise/:id_program" component={DoExercise}/>*/}
         </Switch>
