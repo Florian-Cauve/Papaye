@@ -44,7 +44,7 @@ const NavBar = (props: IProps) => {
             </Link>
 
             {/* Bouton pour voir son compte */}
-            <Link to="/news" className="flex-1 items-center py-4">
+            <Link to="/account" className="flex-1 items-center py-4">
                 <FontAwesomeIcon icon={ faUser } className={selectedPart.account} size="3x"/>
             </Link>
 
