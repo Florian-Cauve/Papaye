@@ -5,13 +5,12 @@ import {authenticate} from "../../helpers/AuthHelpers";
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  let history = useHistory();
 
   const auth = () => {
     if (username !== "" && password !== "") {
       authenticate(username, password).then(res => {
         localStorage.setItem("id", res.data.id.toString());
-        history.push("/news")
+        document.location.href = "/news";
       }).catch(err => {
         console.error("Erreur requete " + err.message +" "+ err.stack)
       })
@@ -32,7 +31,7 @@ const Login = () => {
       </div>
 
       {/* Partie avec le carré pour les éléments de connexion (username et password) */}
-      <div className="flex flex-col bg-yellow-100 w-4/5 rounded-lg p-5 items-center">
+      <div className="flex flex-col bg-yellow-200 w-4/5 rounded-lg p-5 items-center">
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"

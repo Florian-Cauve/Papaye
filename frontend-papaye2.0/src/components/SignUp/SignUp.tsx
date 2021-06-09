@@ -6,14 +6,12 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    let history = useHistory();
-
 
     const confirmRegister = () => {
         if(username !== "" && password !== "" && confirmPassword !== ""){
             if(password === confirmPassword){
                 register(username, password, 0, 0).then(r => {
-                    history.push("/");
+                    document.location.href = "/";
                 })
             }else {
                 alert("You didn't confirm your password !");
@@ -37,7 +35,7 @@ const SignUp = () => {
       </div>
 
       {/* Partie avec le carré pour les éléments de connexion (username et password) */}
-      <div className="flex flex-col bg-yellow-100 w-4/5 rounded-lg p-5 items-center">
+      <div className="flex flex-col bg-yellow-200 w-4/5 rounded-lg p-5 items-center">
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
