@@ -12,5 +12,6 @@ export const getReceipesFromUser = (userId: string) => {
 }
 
 export const addReceipe = (createReceipe: CreateReceipe) => {
+    console.log(createReceipe)
     return axios.post(RECEIPES_API_BASE_URL, createReceipe);
 }
