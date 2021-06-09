@@ -34,7 +34,7 @@ const NavBar = (props: IProps) => {
             </Link>
 
             {/* Bouton pour la partie sport */}
-            <Link to="/training_list" className="flex-1 items-center py-4">
+            <Link to="/trainingsList" className="flex-1 items-center py-4">
                 <FontAwesomeIcon icon={ faDumbbell } className={selectedPart.sport} size="3x"/>
             </Link>
 
