@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {useHistory} from "react-router-dom";
 import {authenticate} from "../../helpers/AuthHelpers";
 
 const Login = () => {
@@ -9,7 +8,7 @@ const Login = () => {
   const auth = () => {
     if (username !== "" && password !== "") {
       authenticate(username, password).then(res => {
-        localStorage.setItem("id", res.data.id.toString());
+        localStorage.setItem("id", res.data.id);
         document.location.href = "/news";
       }).catch(err => {
         console.error("Erreur requete " + err.message +" "+ err.stack)

@@ -3,17 +3,18 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Authentication/Login";
-import SignUp from "./components/SignUp/SignUp";
+import SignUp from "./components/Authentication/SignUp";
 import News from "./components/News/News";
+import MyReceipes from './components/Receipes/MyReceipes'
 
 function App() {
-  const [userConnected, setUserConnected] = useState(false)
+  const [userConnected, setUserConnected] = useState<boolean>(false)
 
   useEffect(() => {
-
-      const currentUserId:number|null  = (localStorage.getItem("id") !== null) ? Number(localStorage.getItem("id")) : null ;
+      const currentUserId:string | null  = (localStorage.getItem("id") !== "") ? localStorage.getItem("id") : null;
       setUserConnected(currentUserId !== null);
-  })
+      console.log(currentUserId)
+  }, [])
 
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
         ) : (
         <Switch>
             <Route path="/news" component={News}/>
+            <Route path="/receipes" component={MyReceipes}/>
             {/*<Route path="/training_list" component={TrainingList}/>*/}
             {/*<Route path="/open_training/:id_program" component={OpenTraining}/>*/}
             {/*<Route path="/do_exercise/:id_program" component={DoExercise}/>*/}

@@ -39,7 +39,7 @@ const NavBar = (props: IProps) => {
             </Link>
 
             {/* Bouton pour la partie nourriture */}
-            <Link to="/news" className="flex-1 items-center py-4">
+            <Link to="/receipes" className="flex-1 items-center py-4">
                 <FontAwesomeIcon icon={ faAppleAlt } className={selectedPart.food} size="3x"/>
             </Link>
 
