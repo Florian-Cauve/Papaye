@@ -16,5 +16,9 @@ export const addReceipe = (createReceipe: CreateReceipe) => {
 }
 
 export const updateReceipe = (receipe: IReceipe) => {
-    return axios.put(RECEIPES_API_BASE_URL, receipe)
+    return axios.put(RECEIPES_API_BASE_URL, receipe);
+}
+
+export const deleteReceipe = (receipeId: string) => {
+    return axios.delete(RECEIPES_API_BASE_URL + receipeId);
 }
