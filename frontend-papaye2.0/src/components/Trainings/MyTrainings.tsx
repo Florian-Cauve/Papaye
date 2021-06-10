@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Training } from '../../helpers/interfaces/interfaces'
 import { getTrainingsFromUser } from '../../helpers/TrainingsHelpers'
 import Header from '../Header/Header'
@@ -27,12 +27,14 @@ const MyTrainings = () => {
     return(
         <>
             <Header/>
-            <div className="h-screen flex flex-col">
-                <h1 className="text-3xl text-green-900 font-bold">Mes Trainings</h1>
-                <button>
+            <section className="flex h-screen items-center">
+                <div className="flex flex-col h-3/4 w-full items-center overflow-auto">
+                    <h1 className="text-3xl text-green-900 font-bold">Mes Trainings</h1>
+                    <button>
 
-                </button>
-            </div>
+                    </button>
+                </div>
+            </section>
             <NavBar part="sport"/>
         </>
     )
