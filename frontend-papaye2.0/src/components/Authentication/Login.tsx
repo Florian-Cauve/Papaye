@@ -30,7 +30,7 @@ const Login = () => {
       </div>
 
       {/* Partie avec le carré pour les éléments de connexion (username et password) */}
-      <div className="flex flex-col bg-yellow-200 w-4/5 rounded-lg p-5 items-center">
+      <form className="flex flex-col bg-yellow-200 w-4/5 rounded-lg p-5 items-center">
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
@@ -42,9 +42,9 @@ const Login = () => {
           onChange={event => setPassword(event.target.value)}
           placeholder="Password" />
         <div onClick={auth} className="bg-green-900 w-3/5 rounded-full mt-10 p-2 *">
-          <div className="text-white text-center text-2xl">Connexion</div>
+          <button type="button" className="text-white text-center text-2xl">Connexion</button>
         </div>
-      </div>
+      </form>
     </div>
   )
 }
