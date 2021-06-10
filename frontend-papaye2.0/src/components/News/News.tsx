@@ -12,9 +12,12 @@ const News = () => {
 			{/* Inclure le header */}
 			<Header/>
 
-			<div className="w-5/6 h-20 border-2">
+			<section className="flex h-screen items-center">
+				<div className="flex flex-col h-3/4 w-full items-center overflow-auto">
+
 				{/* Ajouter une publication */}
-			</div>
+				</div>
+			</section>
 			
 			{/* Inclure la barre de navigation */}
 			<NavBar part="home"/>
