@@ -33,7 +33,7 @@ const Profile = () => {
                 })
             })
         }
-    })
+    }, [])
 
     const unlogging = () => {
         localStorage.removeItem("id")
