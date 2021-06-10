@@ -6,15 +6,7 @@ import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {getUserById} from "../../helpers/UserHelpers";
 import Moment from "moment";
-
-interface IUser{
-    username:string,
-    imageURL: string,
-    height: number,
-    weight: number,
-    creatingDate: string,
-    isLoading: boolean
-}
+import {IUser} from "../../helpers/interfaces/interfaces";
 
 const Profile = () => {
     Moment.locale("fr")

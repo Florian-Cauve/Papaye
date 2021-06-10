@@ -7,6 +7,15 @@ export interface CreateReceipe {
     imageURL?: string
 }
 
+export interface IUser {
+    username:string,
+    imageURL: string,
+    height: number,
+    weight: number,
+    creatingDate: string,
+    isLoading: boolean
+}
+
 export interface IReceipe {
     _id: string,
     name: string,
