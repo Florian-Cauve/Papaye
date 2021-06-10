@@ -1,9 +1,9 @@
 import axios from "axios";
-import {CreateReceipe} from './interfaces/interfaces'
+import {CreateReceipe, IReceipe} from './interfaces/interfaces'
 
 const RECEIPES_API_BASE_URL = "http://localhost:8082/receipes/"
 
-export const getReceipesById = (receipeId: number) => {
+export const getReceipesById = (receipeId: string) => {
     return axios.get(RECEIPES_API_BASE_URL + receipeId);
 }
 
@@ -12,6 +12,9 @@ export const getReceipesFromUser = (userId: string) => {
 }
 
 export const addReceipe = (createReceipe: CreateReceipe) => {
-    console.log(createReceipe)
     return axios.post(RECEIPES_API_BASE_URL, createReceipe);
+}
+
+export const updateReceipe = (receipe: IReceipe) => {
+    return axios.put(RECEIPES_API_BASE_URL, receipe)
 }

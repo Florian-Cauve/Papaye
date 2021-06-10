@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../../images/papaye_logo.png'
 
 const Header = () => {
     return (
@@ -8,9 +9,9 @@ const Header = () => {
 
             {/* logo de Papaye */}
             <img
-                alt=""
+                alt="logo"
                 className="h-15 w-10"
-                src={"papaye_logo.png"}/>
+                src={logo}/>
 
             {/* Nom de l'appli */}
             <div className="text-black font-bold tahoma text-xl ml-4">PAPAYE</div>

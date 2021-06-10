@@ -7,17 +7,24 @@ export interface CreateReceipe {
     imageURL?: string
 }
 
-export interface Receipe {
-    id: string,
+export interface IReceipe {
+    _id: string,
     name: string,
     description: string,
     duration: string,
-    owner: string,
-    ingredients: {
-        name: string,
-        quantity: string
-    },
+    owner: string | null,
+    ingredients: Ingredients[],
     imageURL: string
+}
+
+export const defaultReceipe: IReceipe = {
+    _id: "",
+    name:"",
+    description: "",
+    duration: "",
+    owner: "",
+    ingredients: [],
+    imageURL: ""
 }
 
 export interface Ingredients {
@@ -34,7 +41,7 @@ export interface CreateTraining {
 }
 
 export interface Training {
-    id: string,
+    _id: string,
     porgramName: string,
     description: string,
     owner: string,

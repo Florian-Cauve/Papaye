@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
 
 // @route PUT /users/
 router.put('/', (req, res) => {
-  User.findByIdAndUpdate(req.body.id, req.body)
+  User.findByIdAndUpdate(req.body._id, req.body)
     .then(user => res.json({ msg: 'Updated successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to update the Database' }));
 });

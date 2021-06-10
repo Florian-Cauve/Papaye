@@ -1,21 +1,20 @@
-import { cpuUsage } from 'process'
+import React from 'react'
 import { useState, useEffect } from 'react'
-import { Receipe } from '../../helpers/interfaces/interfaces'
+import { Link } from 'react-router-dom'
+import { IReceipe } from '../../helpers/interfaces/interfaces'
 import { getReceipesFromUser } from '../../helpers/ReciepesHelpers'
-import AddReceipe from './AddReceipe'
 import Header from '../Header/Header'
 import NavBar from '../Header/NavBar'
 
 const MyReceipes = () => {
 
-    const [receipes, setReceipes] = useState<Receipe[]>([])
+    const [receipes, setReceipes] = useState<IReceipe[]>([])
 
     useEffect(() => {
         const currentUserId: string | null = (localStorage.getItem("id") !== null) ? localStorage.getItem("id") : null;
         if (currentUserId != null) {
             getReceipesFromUser(currentUserId)
                 .then(res => {
-                    console.log(res.data)
                     setReceipes(res.data)
                 })
                 .catch(err => {
@@ -44,11 +43,11 @@ const MyReceipes = () => {
                     </button>
 
                     {receipes.map(receipe =>
-                        <div key={receipe.id} className="shadow-md p-2 flex items-center h-24 bg-yellow-200 w-11/12 my-2 rounded-2xl">
+                        <Link to={"/receipe/" + receipe._id} key={receipe._id} className="shadow-md p-2 flex items-center h-24 bg-yellow-200 w-11/12 my-2 rounded-2xl">
                             {receipe.imageURL ?
-                                <img className="h-20 w-20 rounded-2xl" src={receipe.imageURL} alt="food image" />
+                                <img className="h-20 w-20 rounded-2xl" src={receipe.imageURL} alt="food" />
                                 :
-                                <div className="flex h-full bg-gray-200 h-20 w-20 rounded-2xl justify-center items-center">
+                                <div className="flex bg-gray-200 h-20 w-20 rounded-2xl justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
@@ -58,7 +57,7 @@ const MyReceipes = () => {
                                 <p className="font-bold">{receipe.name}</p>
                                 <p className="">{receipe.description}</p>
                             </div>
-                        </div>
+                        </Link>
                     )}
                 </div>
             </section>

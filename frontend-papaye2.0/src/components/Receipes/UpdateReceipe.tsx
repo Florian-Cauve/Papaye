@@ -1,17 +1,31 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { CreateReceipe, Ingredients } from "../../helpers/interfaces/interfaces"
-import { addReceipe } from "../../helpers/ReciepesHelpers"
+import { Link, useParams } from "react-router-dom"
+import { CreateReceipe, defaultReceipe, Ingredients, IReceipe } from "../../helpers/interfaces/interfaces"
+import { addReceipe, getReceipesById, updateReceipe } from "../../helpers/ReciepesHelpers"
 import Header from "../Header/Header"
 
-const AddReceipe = () => {
+const UpdateReceipe = () => {
 
+    const [receipe, setReceipe] = useState<IReceipe>(defaultReceipe)
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [duration, setDuration] = useState<string>("")
     const [ingredients, setIngredients] = useState<Ingredients[]>([])
     const [ingredientName, setIngredientName] = useState<string>("")
     const [ingredientQuantity, setIngredientQuantity] = useState<string>("")
+
+    const params: { id: string } = useParams()
+
+    useEffect(() => {
+        getReceipesById(params.id)
+            .then(res => {
+                setReceipe(res.data)
+                setName(res.data.name)
+                setDescription(res.data.description)
+                setDuration(res.data.duration)
+                setIngredients(res.data.ingredients)
+            })
+    }, [])
 
     const addIngredient = () => {
         const ingredient: Ingredients[] = [{ name: ingredientName, quantity: ingredientQuantity }];
@@ -26,18 +40,18 @@ const AddReceipe = () => {
         setIngredients(array);
     }
 
-    useEffect(() => {
-        console.log(ingredients);
-        
-    }, [ingredients])
-
     const closePopUp = () => {
-        const owner = localStorage.getItem("id");
-        const receipe: CreateReceipe = { name, description, duration, owner, ingredients }
-        addReceipe(receipe).then(res =>
-            document.location.href = "/receipes"
+        receipe.description = description;
+        receipe.name = name;
+        receipe.duration = duration;
+        receipe.ingredients = ingredients;
+
+        updateReceipe(receipe).then(res =>
+            document.location.href = "/receipe/" + receipe._id
         )
     }
+
+    console.log(ingredients)
 
     return (
         <section className="flex h-screen w-screen bg-white bg-opacity-50 justify-center items-center absolute top-0 right-0">
@@ -65,13 +79,13 @@ const AddReceipe = () => {
                         </div>
                         <div className="px-4 mb-4 h-1/7">
                             <label htmlFor="ingredientName" className="text-sm block font-bold m-1 pb-2">INGREDIENT NAME</label>
-                            <input type="text" name="ingredientName" value={ingredientName} placeholder="Ingredient name" onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                            <input type="text" name="ingredientName" value={ingredientName} placeholder="Ingredient name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
                         </div>
                         <div className="px-4 pb-4 mb-4 h-1/7">
                             <label htmlFor="ingredientQuantity" className="text-sm block font-bold m-1 pb-2">INGREDIENT QUANTITY</label>
-                            <input type="text" name="ingredientQuantity" value={ingredientQuantity} placeholder="Ingredient quantity" onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientQuantity(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                            <input type="text" name="ingredientQuantity" value={ingredientQuantity} placeholder="Ingredient quantity" required onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientQuantity(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
                         </div>
-                        <div onClick={addIngredient} className="h-1/7 my-2 mx-16 rounded-2xl bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">
+                        <div onClick={addIngredient} className="h-1/7 my-2 mx-16 rounded-2xl bg-red-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">
                             Add ingredient
                         </div>
                         <div className="flex overflow-auto px-2">
@@ -88,7 +102,7 @@ const AddReceipe = () => {
                         </div>
                     </div>
                     <div className="flex justify-around mt-2 h-1/8 py-2">
-                        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={closePopUp}>Create</button>
+                        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={() => closePopUp()}>Modify</button>
                     </div>
                 </form>
             </div>
@@ -96,4 +110,4 @@ const AddReceipe = () => {
     )
 }
 
-export default AddReceipe
+export default UpdateReceipe;

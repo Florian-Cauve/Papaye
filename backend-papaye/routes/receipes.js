@@ -21,8 +21,8 @@ router.post('/', (req, res) => {
 
 // @route PUT /receipes/
 router.put('/', (req, res) => {
-    Receipe.findByIdAndUpdate(req.body.id, req.body)
-        .then(receipe => res.json({ msg: 'Updated successfully' }))
+    Receipe.findByIdAndUpdate(req.body._id, req.body)
+        .then(receipe => res.json({msg: 'Updated successfully' }))
         .catch(err => res.status(400).json({ error: 'Unable to update the Database' }));
 });
 

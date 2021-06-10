@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
 
 // @route PUT Update a training -> /trainings/
 router.put('/', (req, res) => {
-    Training.findByIdAndUpdate(req.body.id, req.body)
+    Training.findByIdAndUpdate(req.body._id, req.body)
       .then(training => res.json({ msg: 'Updated successfully' }))
       .catch(err => res.status(400).json({ error: 'Unable to update the Database' }));
   });
