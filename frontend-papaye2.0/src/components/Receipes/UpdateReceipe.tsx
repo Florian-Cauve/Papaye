@@ -57,7 +57,7 @@ const UpdateReceipe = () => {
         <section className="flex h-screen w-screen bg-white bg-opacity-50 justify-center items-center absolute top-0 right-0">
             <Header />
             <div className="w-10/12 h-4/5 mt-20 bg-yellow-200 rounded-2xl py-4">
-                <Link className="absolute top-20 left-4 flex items-center" to="/receipes">
+                <Link className="absolute top-20 left-4 flex items-center" to={"/receipe/" + receipe._id}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                     </svg>
