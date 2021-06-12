@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
         .then(user => {
             res.status(202).json({ id: user.id, msg: "User successfully logged in" })
         })
-        .catch(err => console.log(err))
+        .catch(err => res.status(202).json({ msg: "Incorrect" }))
 })
 
 module.exports = router;
