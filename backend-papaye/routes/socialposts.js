@@ -6,9 +6,9 @@ const User = require('../models/user.model');
 
 // @route GET /socialpost/
 router.get('/', (req, res) => {
-    SocialPost.find()
+    SocialPost.find({})
         .then(socialpost => res.json(socialpost))
-        .catch(err => res.status(404).json({ nosocialpostfound: 'No socialpost found' }));
+        .catch(err => res.status(404).json(err));
 });
 
 // @route GET /socialpost/:id
