@@ -40,6 +40,8 @@ const Profile = () => {
         document.location.href = "/";
     }
 
+    
+
     return(
         (userInfos.isLoading ? (
                     <>

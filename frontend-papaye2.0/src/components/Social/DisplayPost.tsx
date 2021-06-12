@@ -6,6 +6,7 @@ import { getAllPost } from '../../helpers/SocialHelpers'
 import Header from '../Header/Header'
 import NavBar from '../Header/NavBar'
 
+
 const MySocialNetwork = () => {
 
     const [socialposts, setSocialPost] = useState<ISocialpost[]>([])
@@ -27,6 +28,10 @@ const MySocialNetwork = () => {
         document.location.href = "/addPost";
     }
 
+    function refreshPage() {
+        window.location.reload();
+    }
+
     return (
         <>
             <Header />
@@ -40,11 +45,23 @@ const MySocialNetwork = () => {
                         <p className="ml-4">Ajouter un post</p>
                     </button>
 
+                    
+                    <button className="mb-3 flex items-center py-2 bg-yellow-200 rounded-2xl px-4" onClick={refreshPage}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" className="bg-white rounded-full p-1 h-7 w-7" viewBox="0 0 24 24">
+                            <path d="M13.5 2c-5.621 0-10.211 4.443-10.475 10h-3.025l5 6.625 5-6.625h-2.975c.257-3.351 3.06-6 6.475-6 
+                            3.584 0 6.5 2.916 6.5 6.5s-2.916 6.5-6.5 6.5c-1.863 
+                            0-3.542-.793-4.728-2.053l-2.427 3.216c1.877 1.754 4.389 2.837 7.155 2.837 5.79 0 10.5-4.71 10.5-10.5s-4.71-10.5-10.5-10.5z"/>
+                        </svg>
+                    </button>
+
                     {socialposts.map(socialpost =>
-                        <div className="shadow-md p-2 flex items-center h-24 bg-yellow-200 w-11/12 my-2 rounded-2xl">
-                            <div className="h-20 w-8/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
-                                <p className="font-bold">{socialpost.name}</p>
-                                <p className="">{socialpost.description}</p>
+                        <div className=" flex-col h-29 text-left w-11/12 my-2">
+                            <p className="pl-4">Publié par : {socialpost.pseudo}</p>                  
+                            <div className="shadow-md flex items-center py-2 h-max bg-yellow-200 w-full my-2 rounded-2xl">
+                                <div className=" w-8/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
+                                    <p className="font-bold">{socialpost.name}</p>
+                                    <p className="">{socialpost.description}</p>
+                                </div>
                             </div>
                         </div>
                     )}

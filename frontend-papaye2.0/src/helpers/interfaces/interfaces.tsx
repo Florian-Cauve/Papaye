@@ -97,11 +97,13 @@ export interface CreateExercise {
 export interface ISocialpost {
     _id: string,
     name: string,
+    pseudo: string,
     description: string,
     owner: string | null,
 }
 
 export interface CreateSocialpost {
+    pseudo: string,
     name: string,
     description: string,
     owner: string | null,
@@ -109,6 +111,7 @@ export interface CreateSocialpost {
 
 export const defaultSocialpost: ISocialpost = {
     _id: "",
+    pseudo: "",
     name:"",
     description: "",
     owner: "",
