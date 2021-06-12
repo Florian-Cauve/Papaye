@@ -1,5 +1,4 @@
-import React from 'react'
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { defaultReceipe, IReceipe } from '../../helpers/interfaces/interfaces'
