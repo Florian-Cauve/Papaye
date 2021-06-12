@@ -42,10 +42,9 @@ export interface Ingredients {
 }
 
 export interface CreateTraining {
-    porgramName: string,
+    programName: string,
     description: string,
-    owner: string,
-    updatedAt: string,
+    owner: string | null,
     pathImage?: string
 }
 

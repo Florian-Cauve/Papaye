@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { CreateReceipe, defaultReceipe, Ingredients, IReceipe } from "../../helpers/interfaces/interfaces"
-import { addReceipe, getReceipesById, updateReceipe } from "../../helpers/ReciepesHelpers"
+import { defaultReceipe, Ingredients, IReceipe } from "../../helpers/interfaces/interfaces"
+import { getReceipesById, updateReceipe } from "../../helpers/ReciepesHelpers"
 import Header from "../Header/Header"
 
 const UpdateReceipe = () => {

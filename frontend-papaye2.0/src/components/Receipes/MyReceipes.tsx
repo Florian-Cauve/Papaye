@@ -32,8 +32,8 @@ const MyReceipes = () => {
     return (
         <>
             <Header />
-            <section className="flex h-screen items-center">
-                <div className="flex flex-col h-3/4 items-center overflow-auto">
+            <section className="flex h-screen w-screen items-center">
+                <div className="flex flex-col w-full h-3/4 items-center overflow-auto">
                     <h1 className="text-3xl text-green-900 font-bold mb-6">Mes recettes</h1>
                     <button className="mb-3 flex items-center py-2 w-11/12 bg-yellow-200 rounded-2xl px-4" onClick={AddReceipe}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="bg-white rounded-full h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">

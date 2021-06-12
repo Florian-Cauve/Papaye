@@ -1,4 +1,3 @@
-import react from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
@@ -32,7 +31,7 @@ const Training = () => {
                 let totalTime = 0;
                 res.data.exercises.map((exercise: IExercises) => {
                     totalTime += exercise.duration;
-                })
+                });
                 const minutes = Math.floor(totalTime / 60);
                 const secondes = totalTime % 60;
                 const duration = minutes.toString() + " : " + secondes.toString()
@@ -95,7 +94,7 @@ const Training = () => {
                         </div>
                     }
                     <p className="my-3 text-xl font-bold">{training.programName}</p>
-                    <Link to={"/doExercise/" + training._id} className="mb-2 text-white bg-green-600 px-4 py-2 rounded-2xl">
+                    <Link to={"/doExercise/" + training._id} className="mb-2 text-white bg-lime-900 px-4 py-2 rounded-2xl">
                         Commencer
                     </Link>
                     <div className="flex items-center justify-center">
@@ -103,24 +102,24 @@ const Training = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <p className="pl-2">{duration}</p>
-                        <div onClick={() => setModifyPopUpOpen(true)}className="pl-4">
+                        <div onClick={() => setModifyPopUpOpen(true)} className="focus:outline-none pl-4">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
                         </div>
-                        <button className="pl-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <button className="focus:outline-none pl-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="focus:outline-none h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                             </svg>
                         </button>
-                        <button className="pl-4" onClick={() => setDeletePopUpOpen(true)}>
+                        <button className="focus:outline-none pl-4" onClick={() => setDeletePopUpOpen(true)}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                         </button>
                     </div>
-                    <div className="flex flex-col items-center rounded-2xl overflow-auto mt-2 flex flex-col w-full h-3/4 bg-yellow-200 px-1 py-3">
-                        <button onClick={() => setAddPopUpOpen(true)} className="flex bg-green-500 text-white w-9/12 items-center p-1 rounded-2xl">
+                    <div className="flex flex-col items-center rounded-2xl overflow-auto mt-2 flex flex-col w-full h-3/4 bg-orange-100 px-1 py-3">
+                        <button onClick={() => setAddPopUpOpen(true)} className="flex bg-lime-900 text-white w-9/12 items-center p-1 rounded-2xl">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
@@ -215,11 +214,11 @@ const Training = () => {
                                 <div className="flex flex-col h-full overflow-auto">
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="exerciseName" className="text-sm block font-bold">NAME</label>
-                                        <input type="text" name="exerciseName" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <input type="text" name="exerciseName" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-00 " />
                                     </div>
                                     <div className="px-4 mb-3 h-2/7">
                                         <label htmlFor="exerciseDescription" className="text-sm block font-bold m-1">DESCRIPTION</label>
-                                        <textarea name="exerciseDescription" value={description} placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <textarea name="exerciseDescription" value={description} placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                                     </div>
                                     <div className="flex justify-around mt-2 h-1/8 py-2">
                                         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={modifyTraining}>Modify</button>
