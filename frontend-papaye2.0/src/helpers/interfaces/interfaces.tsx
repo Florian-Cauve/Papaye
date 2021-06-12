@@ -49,11 +49,39 @@ export interface CreateTraining {
     pathImage?: string
 }
 
-export interface Training {
+export interface ITraining {
     _id: string,
-    porgramName: string,
+    programName: string,
     description: string,
+    exercises: IExercises[],
     owner: string,
     updatedAt: string,
     pathImage?: string
+}
+
+export const defaultTraining: ITraining = {
+    _id: "0",
+    programName: "",
+    description: "",
+    exercises: [],
+    owner: "0",
+    updatedAt: "",
+    pathImage: ""
+}
+
+export interface IExercises {
+    _id: string,
+    name: string,
+    description: string,
+    duration: number,
+    training: string,
+    pathImage: string
+}
+
+export interface CreateExercise {
+    name: string,
+    description: string,
+    duration: number | undefined,
+    training: string,
+    pathImage: string
 }
