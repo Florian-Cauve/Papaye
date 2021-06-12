@@ -85,3 +85,23 @@ export interface CreateExercise {
     training: string,
     pathImage: string
 }
+
+export interface ISocialpost {
+    _id: string,
+    name: string,
+    description: string,
+    owner: string | null,
+}
+
+export interface CreateSocialpost {
+    name: string,
+    description: string,
+    owner: string | null,
+}
+
+export const defaultSocialpost: ISocialpost = {
+    _id: "",
+    name:"",
+    description: "",
+    owner: "",
+}

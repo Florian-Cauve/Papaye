@@ -4,7 +4,7 @@ import './App.css';
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Authentication/Login";
 import SignUp from "./components/Authentication/SignUp";
-import News from "./components/News/News";
+import DisplayPost from "./components/Social/DisplayPost";
 import MyReceipes from './components/Receipes/MyReceipes'
 import AddReceipe from './components/Receipes/AddReceipe';
 import UpdateReceipe from './components/Receipes/UpdateReceipe';
@@ -33,7 +33,7 @@ function App() {
             </Switch>
         ) : (
         <Switch>
-            <Route path="/news" component={News}/>
+            <Route path="/news" component={DisplayPost}/>
             <Route path="/receipes" component={MyReceipes}/>
             <Route path="/addReceipe" component={AddReceipe}/>
             <Route path="/receipe/:id" exact component={Receipe}/>

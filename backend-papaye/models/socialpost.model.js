@@ -10,10 +10,6 @@ const SocialPostSchema = new Schema({
         type: String,
         required: true,
     },
-    link:{
-        type: Schema.Types.ObjectId,
-        required: false,
-    },
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User"
@@ -22,4 +18,4 @@ const SocialPostSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = Receipe = mongoose.model('SocialPost', SocialPostSchema);
+module.exports = Receipe = mongoose.model('Socialpost', SocialPostSchema);
