@@ -35,5 +35,6 @@ app.use('/exercises', exerciseRoutes);
 app.use('/receipes', receipeRoutes);
 app.use('/', authRoutes);
 app.use('/trainings', trainingRoutes);
+app.use('/social', socialRoutes);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

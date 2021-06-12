@@ -12,6 +12,7 @@ import MyTrainings from "./components/Trainings/MyTrainings";
 import Profile from "./components/Profile/Profile";
 import Receipe from './components/Receipes/Receipe';
 import Training from './components/Trainings/Training';
+import AddSocialPost from "./components/Social/AddSocialPost";
 
 function App() {
   const [userConnected, setUserConnected] = useState<boolean>(false)
@@ -34,6 +35,7 @@ function App() {
         ) : (
         <Switch>
             <Route path="/news" component={DisplayPost}/>
+            <Route path="/addPost" component={AddSocialPost}/>
             <Route path="/receipes" component={MyReceipes}/>
             <Route path="/addReceipe" component={AddReceipe}/>
             <Route path="/receipe/:id" exact component={Receipe}/>
@@ -41,7 +43,7 @@ function App() {
             <Route path="/trainings" component={MyTrainings}/>
             <Route path="/training/:id" component={Training}/>
             {/*<Route path="/open_training/:id_program" component={OpenTraining}/>*/}
-            <Route path="/do_exercise/:id_program" component={DoExercise}/>
+            {/*<Route path="/do_exercise/:id_program" component={DoExercise}/>*/}
             <Route path="/account" component={Profile}/>
         </Switch>
         )}
