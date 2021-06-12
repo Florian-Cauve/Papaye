@@ -8,8 +8,14 @@ const Login = () => {
   const auth = () => {
     if (username !== "" && password !== "") {
       authenticate(username, password).then(res => {
-        localStorage.setItem("id", res.data.id);
-        document.location.href = "/news";
+        console.log(res.data)
+        if(res.data.id !== undefined){
+          localStorage.setItem("id", res.data.id);
+          document.location.href = "/news";
+        }else {
+          localStorage.removeItem("id")
+          document.location.href = "/"
+        }
       }).catch(err => {
         console.error("Erreur requete " + err.message +" "+ err.stack)
       })

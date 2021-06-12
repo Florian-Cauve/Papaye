@@ -19,8 +19,12 @@ function App() {
 
   useEffect(() => {
       const currentUserId:string | null  = (localStorage.getItem("id") !== "") ? localStorage.getItem("id") : null;
-      setUserConnected(currentUserId !== null);
+      setUserConnected(currentUserId !== null && currentUserId !== undefined);
       console.log(currentUserId)
+      if(currentUserId === undefined){
+          localStorage.removeItem("id")
+          document.location.href = "/"
+      }
   }, [])
 
   return (

@@ -1,4 +1,5 @@
 import axios from "axios";
+import {IUser} from "./interfaces/interfaces";
 
 const USER_API_BASE_URL = "http://localhost:8082/users/"
 
@@ -18,8 +19,8 @@ export const getExercicesFromUserById = (userId: string) => {
     return axios.get(USER_API_BASE_URL + userId + "/exercises")
 }
 
-export const updateUser = (id: string, username: string, password: string, height: number, weight: number) => {
-    return axios.put(USER_API_BASE_URL, { id: id, username: username, password: password, height: height, weight: weight });
+export const updateUser = (user: IUser) => {
+    return axios.put(USER_API_BASE_URL, user);
 }
 
 export const deleteUserById = (userId: string) => {

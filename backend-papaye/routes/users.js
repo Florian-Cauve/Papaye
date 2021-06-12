@@ -25,6 +25,7 @@ router.get('/:id', (req, res) => {
 
 // @route PUT /users/
 router.put('/', (req, res) => {
+  req.body.password = passwordServices.hash(req.body.password)
   User.findByIdAndUpdate(req.body._id, req.body)
     .then(user => res.json({ msg: 'Updated successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to update the Database' }));
