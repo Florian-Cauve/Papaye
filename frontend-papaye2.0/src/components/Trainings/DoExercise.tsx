@@ -26,9 +26,12 @@ const DoExercise = () => {
 	useEffect(() => {
         getTrainingsById(params.id).then(res => {
             setTraining(res.data)
-            console.log(res.data)            
         })
     }, [] )
+
+	useEffect(() => {
+		changeTimer(initializeChronometer())
+	}, [training])
 
     // Use effect of changeExercise
 	useEffect(() => {
