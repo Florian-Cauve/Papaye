@@ -94,7 +94,7 @@ const Training = () => {
                         </div>
                     }
                     <p className="my-3 text-xl font-bold">{training.programName}</p>
-                    <Link to={"/doExercise/" + training._id} className="mb-2 text-white bg-lime-900 px-4 py-2 rounded-2xl">
+                    <Link to={"/do_exercise/" + training._id} className="mb-2 text-white bg-lime-900 px-4 py-2 rounded-2xl">
                         Commencer
                     </Link>
                     <div className="flex items-center justify-center">

@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import Receipe from './components/Receipes/Receipe';
 import Training from './components/Trainings/Training';
 import AddSocialPost from "./components/Social/AddSocialPost";
+import DoExercise from './components/Trainings/DoExercise';
 
 function App() {
   const [userConnected, setUserConnected] = useState<boolean>(false)

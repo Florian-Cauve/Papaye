@@ -1,59 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { faAngleLeft, faAngleRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faEdit } from '@fortawesome/free-regular-svg-icons'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { ITraining, defaultTraining } from '../../helpers/interfaces/interfaces';
 import { getTrainingsById } from '../../helpers/TrainingsHelpers'
+import { Link } from 'react-router-dom'
+import Header from '../Header/Header'
+import NavBar from '../Header/NavBar'
 
 const DoExercise = () => {
 
-    const [training, setTraining] = useState<ITraining>(defaultTraining)
-    const [currentExercise, changeExercise] = useState<number>(0);
-
+	// Gather the id program
 	const params: {id:string} = useParams();
 
+	// Initialise constant
+    const [training, setTraining] = useState<ITraining>(defaultTraining)
+    const [currentExercise, changeExercise] = useState<number>(0);
+	const [timer, changeTimer] = useState<{ hours: string, minutes: string, seconds: string }>({ hours : "0", minutes : "0", seconds : "0"})
+	const [isChronometerLaunch, changeChronometerState ] = useState<boolean>(false);
+	const [ArrayTimeOut, changeTimeOutTable] = useState<NodeJS.Timeout[]>([])
+	const [PausePlayButtonIcon, changeIconPausePlay] = useState(faPlay)
+
+	// Initialize useEffect
 	useEffect(() => {
         getTrainingsById(params.id).then(res => {
             setTraining(res.data)
         })
-    }, [])
+    }, [] )
 
-	// Function to initialize the chronometer
-	function initializeChronometer() {
+	useEffect(() => {
+		changeTimer(initializeChronometer())
+	}, [training])
 
-		// Get duration of the exercise
-		let initialize = training.exercises[currentExercise].duration;
-
-		// Calculate hours
-		let hours = (~~(initialize / 3600)).toString();
-		initialize -= hours * 3600;
-		if (hours.length < 2 ){
-			hours = "0" + hours
-		}
-
-		// Calculate minutes
-		let minutes = (~~(initialize / 60)).toString();
-		initialize -= minutes * 60;
-		if (minutes.length < 2 ){
-			minutes = "0" + minutes
-		}
-
-		// Calculate seconds
-		let seconds = initialize.toString();
-		if (seconds.length < 2 ){
-			seconds = "0" + seconds
-		}
-
-		return {
-			hours : hours,
-			minutes : minutes,
-			seconds : seconds,
-		}
-	}
-
-	// Current Exercise
-	const [currentExercise, changeExercise] = useState(0);
-
-	// Use effect of changeExercise
+    // Use effect of changeExercise
 	useEffect(() => {
 		clearAllTimeout()
 		if (isChronometerLaunch){
@@ -61,78 +41,112 @@ const DoExercise = () => {
 		}
 	}, [currentExercise])
 
-	// Chronometer values
-	const [timer, changeTimer] = useState(initializeChronometer())
-
-	// Used to know if the chronometer is running
-	const [ isChronometerLaunch, changeChronometerState ] = useState(false);
-
+	// Use effect of the isChronometerLaunch
 	useEffect(() => {
-
 		if (isChronometerLaunch === true){
 			changeIconPausePlay(faPause)
 		}
 		else{
 			changeIconPausePlay(faPlay)
 		}
-
 	}, [isChronometerLaunch])
 
-	// Store all timeout
-	const [ ArrayTimeOut, changeTimeOutTable ] = useState([])
 
-	// Icon of the pause/play button
-	const [PausePlayButton, changeIconPausePlay] = useState(faPlay)
+	// Function to initialize the chronometer
+	function initializeChronometer() {
 
+		console.log(training)
+
+		// Get duration of the exercise
+		let initialize:number = training.exercises[currentExercise].duration;
+		// let initialize:number = 0; 
+
+		// Calculate hours
+		let hours:number = (~~(initialize / 3600));
+		initialize -= hours * 3600;
+
+		let hours_ = hours.toString()
+		if (hours < 10 ){
+			hours_ = "0" + hours_
+		}
+
+		// Calculate minutes
+		let minutes:number = (~~(initialize / 60));
+		initialize -= minutes * 60;
+		
+		let minutes_ = minutes.toString()
+		if (minutes < 10 ){
+			minutes_ = "0" + minutes_
+		}
+
+		// Calculate seconds
+		let seconds:number = initialize;
+		
+		let seconds_ = seconds.toString()
+		if (seconds < 10 ){
+			seconds_ = "0" + seconds_
+		}
+
+		return {
+			hours : hours_,
+			minutes : minutes_,
+			seconds : seconds_,
+		}
+	}
 	
 
 	// Go to next exercise
-	function ChangeExercise(next){
-		if ( ( (currentExercise + next) <= exercise.length - 1) && ( (currentExercise + next) >= 0 ) ){
+	function ChangeExercise(next:number){
+		if ( ( (currentExercise + next) <= training.exercises.length - 1) && ( (currentExercise + next) >= 0 ) ){
 			changeChronometerState(true)
-			changeChronometer(exercise[currentExercise + next].time);
+			changeChronometer(training.exercises[currentExercise + next].duration);
 			changeExercise(currentExercise + next);
 		}
 	}
 
 	// Calculate the remaining time and put it in chronometer values
-	function changeChronometer(time_remaining){
+	function changeChronometer(time_remaining:number){
 
 		// Get duration of the exercise
 		let initialize = time_remaining;
 
 		// Calculate hours
-		let hours = (~~(initialize / 3600)).toString();
+		let hours:number = (~~(initialize / 3600));
 		initialize -= hours * 3600;
-		if (hours.length < 2 ){
-			hours = "0" + hours
+
+		let hours_ = hours.toString()
+		if (hours < 10 ){
+			hours_ = "0" + hours_
 		}
 
 		// Calculate minutes
-		let minutes = (~~(initialize / 60)).toString();
+		let minutes:number = (~~(initialize / 60));
 		initialize -= minutes * 60;
-		if (minutes.length < 2 ){
-			minutes = "0" + minutes
+		
+		let minutes_ = minutes.toString()
+		if (minutes < 10 ){
+			minutes_ = "0" + minutes_
 		}
 
 		// Calculate seconds
-		let seconds = initialize.toString();
-		if (seconds.length < 2 ){
-			seconds = "0" + seconds
+		let seconds:number = initialize;
+		
+		let seconds_ = seconds.toString()
+		if (seconds < 10 ){
+			seconds_ = "0" + seconds_
 		}
 
 		// console.log(`${time_remaining} --> \thours : ${hours}\tminutes : ${minutes}\tseconds : ${seconds}`)
 
 		changeTimer(
 			{
-				hours : hours.toString(),
-				minutes : minutes.toString(),
-				seconds : seconds.toString(),
+				hours : hours_,
+				minutes : minutes_,
+				seconds : seconds_,
 			}
 		)
 
-		console.log(hours, minutes, seconds)
-		if ((hours === "00") && (minutes === "00") && (seconds === "00")){
+		if ((hours_ === "00") && (minutes_ === "00") && (seconds_ === "00")){
 			ChangeExercise(1)
 		}
 	}
@@ -140,14 +154,14 @@ const DoExercise = () => {
 	// Start the chronometer
 	function launchChronometer(){
 
-		const time_remaining = parseInt(timer.hours) * 3600 + parseInt(timer.minutes) * 60 + parseInt(timer.seconds)
+		const time_remaining:number = parseInt(timer.hours) * 3600 + parseInt(timer.minutes) * 60 + parseInt(timer.seconds)
 
 		for (let seconds = 1; seconds <= time_remaining; seconds++){
-			let new_time_out = setTimeout(() => {
+			let new_time_out:NodeJS.Timeout = setTimeout(() => {
 				changeChronometer(time_remaining - seconds)
 			}, 1000 * seconds);
 
-			let newArrayTimeOut = ArrayTimeOut
+			let newArrayTimeOut:NodeJS.Timeout[] = ArrayTimeOut
 			newArrayTimeOut.push(new_time_out)
 			changeTimeOutTable(newArrayTimeOut)
 		}
@@ -156,64 +170,66 @@ const DoExercise = () => {
 
 	function clearAllTimeout(){
 
-		for (timeOut of ArrayTimeOut){
-			clearTimeout(timeOut);
-		}
-		changeTimeOutTable([])
+		let TimeOutArray:NodeJS.Timeout[] = ArrayTimeOut
 
+		TimeOutArray.forEach((timeOut:NodeJS.Timeout) => {
+			clearTimeout(timeOut);
+		});
+
+		changeTimeOutTable([]);
 	}
 
 
 	return (
 
-		<SafeAreaView style={tailwind("flex-1 items-center")}>
+		<section className="flex-1 items-center">
 
 			{/* Include header*/}
 			<Header/>
 
-			<ScrollView style={tailwind("flex-1 w-full")}>
+			<div className="flex-1 w-full">
 
-				<View style={tailwind("flex-1 w-full items-center mb-32")}>
+				<div className="flex-1 w-full items-center mb-32">
 					
 					{/* Return button */}
-					<Link to={`/open_training/${Params.id_program}`} style={tailwind("w-11/12 mb-6")}>
-						<View style={tailwind("flex-row items-center")}>
+					<Link to={`/open_training/${params.id}`} className="w-11/12 mb-6">
+						<div className="flex-row items-center">
 							<FontAwesomeIcon icon={ faAngleLeft }/>
-							<Text>Retour</Text>
-						</View>
+							<label>Retour</label>
+						</div>
 					</Link>
 
-					<View style={tailwind("w-10/12 items-center bg-yellow-100 rounded-lg py-10")}>
+					<div className="w-10/12 items-center bg-yellow-100 rounded-lg py-10">
 						
 						{/* Image of the Exercise */}
-						<Image
-							style={tailwind("h-48 w-48 rounded-full mb-2")}
-							source={exercise[currentExercise].image}
+						<img
+							className="h-48 w-48 rounded-full mb-2"
+							src= {training.exercises[currentExercise].pathImage}
 							/>
-						<Text style={tailwind("font-bold text-green-900 mb-10 text-2xl")}>{exercise[currentExercise].exercise_name}</Text>
+						<label className="font-bold text-green-900 mb-10 text-2xl">{training.exercises[currentExercise].name}</label>
 
 						{/* Timer part */}
-						<View style={tailwind("w-3/5 flex-row justify-center items-center pb-6")}>
-							<FontAwesomeIcon icon = {faClock} size={45} style={tailwind("text-green-900")}/>
-							<Text style={tailwind("text-4xl ml-4 text-green-900")}>{timer.hours}:{timer.minutes}:{timer.seconds}</Text>
-						</View>
+						<div className="w-3/5 flex-row justify-center items-center pb-6">
+							<FontAwesomeIcon icon = {faClock} size="2x" className="text-green-900"/>
+							<label className="text-4xl ml-4 text-green-900">{timer.hours}:{timer.minutes}:{timer.seconds}</label>
+						</div>
 
 						{/* Timer button */}
-						<View style={tailwind("flex-row w-3/5 justify-between pb-4")}>
+						<div className="flex-row w-3/5 justify-between pb-4">
 							
 							{/* Previous exercise */}
-							<TouchableHighlight
-								style={tailwind("p-2 bg-green-900 rounded-lg")}
-								onPress={() => {
+							<div
+								className="p-2 bg-green-900 rounded-lg"
+								onClick={() => {
 									ChangeExercise(-1)
 								}}>
-								<FontAwesomeIcon icon={ faAngleLeft } size={25} style={tailwind("text-white")}/>
-							</TouchableHighlight>
+								<FontAwesomeIcon icon={ faAngleLeft } size="2x" className="text-white"/>
+							</div>
 
 							{/* Play/Pause the exercise */}
-							<TouchableHighlight
-								style={tailwind("p-2 bg-green-900 rounded-lg")}
-								onPress={() => {
+							<div
+								className="p-2 bg-green-900 rounded-lg"
+								onClick={() => {
 									if(isChronometerLaunch){
 										changeChronometerState(false)
 										clearAllTimeout();
@@ -223,39 +239,39 @@ const DoExercise = () => {
 										launchChronometer()
 									}
 								}}>
-								<FontAwesomeIcon icon={PausePlayButton} size={25} style={tailwind("text-white")}/>
-							</TouchableHighlight>
+								<FontAwesomeIcon icon={PausePlayButtonIcon} size="2x" className="text-white"/>
+							</div>
 
 							{/* Next Exercise */}
-							<TouchableHighlight
-								style={tailwind("p-2 bg-green-900 rounded-lg")}
-								onPress={() => {
+							<div
+								className="p-2 bg-green-900 rounded-lg"
+								onClick={() => {
 									ChangeExercise(1)
 								}}>
-								<FontAwesomeIcon icon={ faAngleRight } size={25} style={tailwind("text-white")}/>
-							</TouchableHighlight>
+								<FontAwesomeIcon icon={ faAngleRight } size="2x" className="text-white"/>
+							</div>
 
-						</View>
+						</div>
 
 						{/* Stop the program */}
 						<Link
-							style={tailwind("p-2 bg-red-500 rounded")}
-							to={`/open_training/${Params.id_program}`}>
-							<Text style={tailwind("text-xl")}>Arrêter</Text>
+							className="p-2 bg-red-500 rounded"
+							to={`/open_training/${params.id}`}>
+							<label className="text-xl">Arrêter</label>
 						</Link>
 
-					</View>
+					</div>
 					
 
-				</View>
+				</div>
 
 
-			</ScrollView>
+			</div>
 			
 			{/* Includ bottom NavBar */}
 			<NavBar part="sport"/>
 
-		</SafeAreaView>
+		</section>
 	)
 }
 
