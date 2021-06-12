@@ -13,6 +13,7 @@ const Profile = () => {
     const [username, setUserName] = useState("")
     const [newUsername, setNewUserName] = useState("")
     const [creatingDate, setCreatingDate] = useState("")
+    const [password, setPassword] = useState("")
     const [height, setHeight] = useState(0)
     const [newHeight, setnewHeight] = useState(0)
     const [weight, setWeight] = useState(0)
@@ -29,6 +30,7 @@ const Profile = () => {
                 setUserName(res.data.username)
                 setNewUserName(res.data.username)
                 setCreatingDate(Moment(res.data.createdAt).format("d MMM YYYY"))
+                setPassword(res.data.password)
                 setHeight(res.data.height)
                 setnewHeight(res.data.height)
                 setWeight(res.data.weight)
@@ -48,6 +50,7 @@ const Profile = () => {
         if(newUsername !== "" && newHeight > 0 && newWeight > 0 && currentUserId !== null){
             const newUser:IUser = {
                 _id: currentUserId,
+                password: password,
                 height: newHeight,
                 username: newUsername,
                 weight: newWeight
