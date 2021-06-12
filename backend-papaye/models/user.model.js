@@ -35,7 +35,13 @@ const UserSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Training"
         }
-    ]
+    ],
+    socialPosts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "SocialPosts"
+        }   
+    ],
 }, {
     timestamps: true,
 });
