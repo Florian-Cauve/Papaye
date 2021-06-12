@@ -28,6 +28,7 @@ const exerciseRoutes = require('./routes/exercises')
 const receipeRoutes = require('./routes/receipes')
 const authRoutes = require('./routes/authentification')
 const trainingRoutes = require('./routes/training')
+const socialRoutes = require('./routes/socialposts')
 
 app.use('/users', userRoutes);
 app.use('/exercises', exerciseRoutes);
