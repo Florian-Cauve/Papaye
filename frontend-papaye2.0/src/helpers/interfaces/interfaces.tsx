@@ -8,11 +8,12 @@ export interface CreateReceipe {
 }
 
 export interface IUser {
-    _id: string,
     username:string,
-    password:string,
+    imageURL: string,
     height: number,
     weight: number,
+    creatingDate: string,
+    isLoading: boolean
 }
 
 export interface IReceipe {
