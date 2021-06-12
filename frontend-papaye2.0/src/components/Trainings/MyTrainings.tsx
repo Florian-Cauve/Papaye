@@ -41,8 +41,8 @@ const MyTrainings = () => {
             <Header />
             <section className="flex h-screen w-screen items-center">
                 <div className="flex flex-col h-3/4 w-full items-center overflow-auto">
-                    <h1 className="text-3xl text-green-900 font-bold mb-6">Mes entraînements</h1>
-                    <button className="mb-3 flex items-center py-2 w-11/12 bg-yellow-200 rounded-2xl px-4" onClick={() => setPopUpOpen(true)}>
+                    <h1 className="text-3xl text-lime-900 font-bold mb-6">Mes entraînements</h1>
+                    <button className="focus:outline-none mb-3 flex items-center py-2 w-11/12 bg-orange-100 rounded-2xl px-4" onClick={() => setPopUpOpen(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="bg-white rounded-full h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
@@ -50,7 +50,7 @@ const MyTrainings = () => {
                     </button>
 
                     {trainings.map(training =>
-                        <Link to={"/training/" + training._id} key={training._id} className="shadow-md p-2 flex items-center h-24 bg-yellow-200 w-11/12 my-2 rounded-2xl">
+                        <Link to={"/training/" + training._id} key={training._id} className="shadow-md p-2 flex items-center h-24 bg-orange-100 w-11/12 my-2 rounded-2xl">
                             {training.pathImage ?
                                 <img className="h-20 w-20 rounded-2xl" src={training.pathImage} alt="food" />
                                 :
@@ -85,11 +85,11 @@ const MyTrainings = () => {
                                     </select>
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="programName" className="text-sm block font-bold">NAME</label>
-                                        <input type="text" name="programName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setProgramName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <input type="text" name="programName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setProgramName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                                     </div>
                                     <div className="px-4 mb-3 h-2/7">
                                         <label htmlFor="exerciseDescription" className="text-sm block font-bold m-1">DESCRIPTION</label>
-                                        <textarea name="description" placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <textarea name="description" placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                                     </div>
                                     <div className="flex justify-around mt-2 h-1/8 py-2">
                                         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={AddTraining}>Create</button>

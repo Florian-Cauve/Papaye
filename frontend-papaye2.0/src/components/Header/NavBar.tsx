@@ -9,11 +9,11 @@ interface IProps {
 
 const NavBar = (props: IProps) => {
     let selectedPart: {[index: string]:string} = {
-        "home" : "text-green-900",
-        "search" : "text-green-900",
-        "sport" : "text-green-900",
-        "food" : "text-green-900",
-        "account" : "text-green-900",
+        "home" : "text-lime-900",
+        "search" : "text-lime-900",
+        "sport" : "text-lime-900",
+        "food" : "text-lime-900",
+        "account" : "text-lime-900",
     }
 
     selectedPart[props.part] = "text-red-400"
@@ -21,7 +21,7 @@ const NavBar = (props: IProps) => {
     return (
 
         // Barre de navigation de l'appli
-        <div className="w-full flex justify-between absolute bottom-0 border-t-2 border-green-900 bg-white">
+        <div className="w-full flex justify-between absolute bottom-0 border-t-2 border-lime-900 bg-white">
 
             {/* Bouton home/ fil d'actualité */}
             <Link to="/news" className="flex-1 items-center py-4">
