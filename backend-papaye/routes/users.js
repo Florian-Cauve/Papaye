@@ -6,6 +6,7 @@ const User = require('../models/user.model');
 const Receipe = require('../models/receipe.model');
 const Training = require('../models/training.model');
 const Exercise = require('../models/exercise.model');
+const Socialpost = require('../models/socialpost.model');
 
 
 // @route GET /users/
@@ -33,6 +34,13 @@ router.put('/', (req, res) => {
 router.get('/:id/receipes', (req, res) => {
   User.findById(req.params.id).populate("receipes")
     .then(user => res.json(user.receipes))
+    .catch(err => res.status(404).json({ nousersfound: 'No Users found' }));
+});
+
+// @route GET users/:id/socialposts
+router.get('/:id/socialposts', (req, res) => {
+  User.findById(req.params.id).populate("socialposts")
+    .then(user => res.json(user.socialposts))
     .catch(err => res.status(404).json({ nousersfound: 'No Users found' }));
 });
 
