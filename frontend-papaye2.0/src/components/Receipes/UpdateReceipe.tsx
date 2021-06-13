@@ -85,7 +85,7 @@ const UpdateReceipe = () => {
                             <label htmlFor="ingredientQuantity" className="text-sm block font-bold m-1 pb-2">INGREDIENT QUANTITY</label>
                             <input type="text" name="ingredientQuantity" value={ingredientQuantity} placeholder="Ingredient quantity" required onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientQuantity(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                         </div>
-                        <div onClick={addIngredient} className="h-1/7 my-2 mx-16 rounded-2xl bg-red-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">
+                        <div onClick={addIngredient} className="h-1/7 my-2 mx-16 rounded-2xl bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">
                             Add ingredient
                         </div>
                         <div className="flex overflow-auto px-2">
