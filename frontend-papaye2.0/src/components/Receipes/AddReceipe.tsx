@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { CreateReceipe, Ingredients } from "../../helpers/interfaces/interfaces"
 import { addReceipe } from "../../helpers/ReciepesHelpers"
@@ -25,11 +25,6 @@ const AddReceipe = () => {
         array.splice(index, 1);
         setIngredients(array);
     }
-
-    useEffect(() => {
-        console.log(ingredients);
-        
-    }, [ingredients])
 
     const closePopUp = () => {
         const owner = localStorage.getItem("id");

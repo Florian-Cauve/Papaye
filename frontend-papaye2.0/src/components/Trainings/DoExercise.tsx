@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { faAngleLeft, faAngleRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { faClock, faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faClock} from '@fortawesome/free-regular-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { ITraining, defaultTraining } from '../../helpers/interfaces/interfaces';
 import { getTrainingsById } from '../../helpers/TrainingsHelpers'
@@ -21,9 +21,6 @@ const DoExercise = () => {
 	const [isChronometerLaunch, changeChronometerState ] = useState<boolean>(false);
 	const [ArrayTimeOut, changeTimeOutTable] = useState<NodeJS.Timeout[]>([])
 	const [PausePlayButtonIcon, changeIconPausePlay] = useState(faPlay)
-
-	console.log(params.id);
-	
 
 	// Initialize useEffect
 	useEffect(() => {
@@ -57,8 +54,6 @@ const DoExercise = () => {
 
 	// Function to initialize the chronometer
 	function initializeChronometer() {
-
-		console.log(training)
 
 		// Get duration of the exercise
 		let initialize:number = training.exercises[currentExercise].duration;

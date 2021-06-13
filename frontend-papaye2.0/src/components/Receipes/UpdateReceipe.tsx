@@ -51,8 +51,6 @@ const UpdateReceipe = () => {
         )
     }
 
-    console.log(ingredients)
-
     return (
         <section className="flex h-screen w-screen bg-white bg-opacity-50 justify-center items-center absolute top-0 right-0">
             <Header />

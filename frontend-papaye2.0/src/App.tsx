@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import HomePage from "./components/HomePage/HomePage";
@@ -39,7 +39,7 @@ function App() {
             </Switch>
         ) : (
         <Switch>
-            <Route path="/news" component={DisplayPost}/>
+            <Route path="/social" component={DisplayPost}/>
             <Route path="/addPost" component={AddSocialPost}/>
             <Route path="/receipes" component={MyReceipes}/>
             <Route path="/addReceipe" component={AddReceipe}/>

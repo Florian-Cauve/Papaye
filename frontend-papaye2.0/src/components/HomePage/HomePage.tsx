@@ -15,7 +15,7 @@ const HomePage = () => {
       </div>
 
       {/* Partie avec le carré de connexion et d'inscription */}
-      <div className="flex flex-col bg-yellow-200 w-4/5 rounded-lg p-5 items-center">
+      <div className="flex flex-col bg-orange-100 w-4/5 rounded-lg p-5 items-center">
         <Link to="/login" className="bg-white w-4/5 rounded-full m-3 p-2 *">
           <div className="text-black text-center text-2xl">Connexion</div>
         </Link>

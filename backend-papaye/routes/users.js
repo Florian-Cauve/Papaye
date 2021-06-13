@@ -40,10 +40,7 @@ router.get('/:id/receipes', (req, res) => {
 // @route GET all posts of a user --> users/:id/socialposts
 router.get('/:id/socialposts', (req, res) => {
   User.findById(req.params.id).populate("socialPosts")
-    .then(user => {
-      console.log(user)
-      res.json(user.socialPosts)
-    })
+    .then(user => res.json(user.socialPosts))
     .catch(err => res.status(404).json({ nousersfound: 'No Users found' }));
 });
 

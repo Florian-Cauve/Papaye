@@ -13,12 +13,8 @@ const Receipe = () => {
     const params: { id: string } = useParams()
 
     useEffect(() => {
-        console.log(params.id)
         getReceipesById(params.id)
-            .then(res => {
-                setReceipe(res.data)
-                console.log(res.data)
-            })
+            .then(res => setReceipe(res.data))
     }, [])
 
     const deleteThisReceipe = () => {

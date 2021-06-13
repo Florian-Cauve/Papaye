@@ -1,6 +1,4 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { ISocialpost } from '../../helpers/interfaces/interfaces'
 import { getAllPost } from '../../helpers/SocialHelpers'
 import Header from '../Header/Header'
@@ -14,11 +12,7 @@ const MySocialNetwork = () => {
 
     useEffect(() => {
         getAllPost()
-            .then(res => {
-                setSocialPost(res.data)
-                console.log(res.data);
-
-            })
+            .then(res => setSocialPost(res.data))
             .catch(err => {
                 console.error("Erreur requete " + err.message + " " + err.stack)
             })
@@ -39,15 +33,15 @@ const MySocialNetwork = () => {
             <section className="flex h-screen w-screen items-center">
                 <div className="flex flex-col w-full h-3/4 items-center overflow-auto">
                     <h1 className="text-3xl text-green-900 font-bold mb-6">Mon réseau Social</h1>
-                    <button className="mb-3 flex items-center py-2 w-11/12 bg-orange-100 rounded-2xl px-4" onClick={AddPost}>
+                    <button className="mb-3 flex items-center py-2 w-11/12 bg-lime-900 rounded-2xl px-4" onClick={AddPost}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="bg-white rounded-full h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
-                        <p className="ml-4">Ajouter un post</p>
+                        <p className="ml-4 text-white">Ajouter un post</p>
                     </button>
 
 
-                    <button className="mb-3 flex items-center py-2 bg-orange-100 rounded-2xl px-4" onClick={refreshPage}>
+                    <button className="mb-3 flex items-center py-2 bg-orange-100 rounded-2xl px-8" onClick={refreshPage}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" className="bg-white rounded-full p-1 h-7 w-7" viewBox="0 0 24 24">
                             <path d="M13.5 2c-5.621 0-10.211 4.443-10.475 10h-3.025l5 6.625 5-6.625h-2.975c.257-3.351 3.06-6 6.475-6 
                             3.584 0 6.5 2.916 6.5 6.5s-2.916 6.5-6.5 6.5c-1.863 

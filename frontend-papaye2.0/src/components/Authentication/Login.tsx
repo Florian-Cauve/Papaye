@@ -1,5 +1,6 @@
-import {useState} from "react";
-import {authenticate} from "../../helpers/AuthHelpers";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { authenticate } from "../../helpers/AuthHelpers";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -8,24 +9,29 @@ const Login = () => {
   const auth = () => {
     if (username !== "" && password !== "") {
       authenticate(username, password).then(res => {
-        console.log(res.data)
-        if(res.data.id !== undefined){
+        if (res.data.id !== undefined) {
           localStorage.setItem("id", res.data.id);
-          document.location.href = "/news";
-        }else {
+          document.location.href = "/social";
+        } else {
           localStorage.removeItem("id")
           document.location.href = "/"
         }
       }).catch(err => {
-        console.error("Erreur requete " + err.message +" "+ err.stack)
+        console.error("Erreur requete " + err.message + " " + err.stack)
       })
     }
   }
 
   return (
-    <div className="flex flex-col h-screen justify-center items-center">
 
-      {/* Partie avec le logo et le nom */}
+    <div className="flex flex-col h-screen justify-center items-center">
+      <Link className="absolute top-4 left-4 flex items-center" to={"/"}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <p>Retour</p>
+      </Link>
+      {/* Logo and name part */}
       <div className="flex flex-col w-3/5 h-2/5 items-center">
         <img
           alt=""
@@ -35,8 +41,8 @@ const Login = () => {
         <div className="text-black font-bold text-4xl">PAPAYE</div>
       </div>
 
-      {/* Partie avec le carré pour les éléments de connexion (username et password) */}
-      <form className="flex flex-col bg-yellow-200 w-4/5 rounded-lg p-5 items-center">
+      {/* Connexion elements part (username et password) */}
+      <form className="flex flex-col bg-orange-100 w-4/5 rounded-2xl p-5 items-center">
         <input
           className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
@@ -47,7 +53,7 @@ const Login = () => {
           type="password"
           onChange={event => setPassword(event.target.value)}
           placeholder="Password" />
-        <div onClick={auth} className="bg-green-900 w-3/5 rounded-full mt-10 p-2 *">
+        <div onClick={auth} className="bg-lime-900 w-3/5 rounded-full mt-10 p-2 *">
           <button type="button" className="text-white text-center text-2xl">Connexion</button>
         </div>
       </form>

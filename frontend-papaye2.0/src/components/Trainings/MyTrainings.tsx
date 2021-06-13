@@ -79,10 +79,6 @@ const MyTrainings = () => {
                             </div>
                             <form className="flex flex-col h-full overflow-auto">
                                 <div className="flex flex-col h-full overflow-auto">
-                                    {/* A faire pour add une image psq ca marche pas*/}
-                                    <select>
-                                        <option data-img-src="../../images/papaye_logo.png" value="path">Bouh</option>
-                                    </select>
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="programName" className="text-sm block font-bold">NAME</label>
                                         <input type="text" name="programName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setProgramName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
