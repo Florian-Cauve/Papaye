@@ -54,15 +54,15 @@ const MySocialNetwork = () => {
                         <div key={socialpost._id} className=" flex-col h-29 text-left w-11/12 my-2">
                             <p className="pl-4">Publié par : {socialpost.pseudo}</p>
                             {socialpost.owner === currentUserId ? <div className="shadow-md flex items-center py-2 h-max bg-coolGray-100 w-full my-2 rounded-2xl">
-                                <div className=" w-8/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
-                                    <p className="font-bold">{socialpost.name}</p>
-                                    <p className="">{socialpost.description}</p>
+                                <div className=" w-11/12 flex flex-col items-center overflow-hidden pl-6 text-left">
+                                    <p className="font-bold w-full">{socialpost.name}</p>
+                                    <p className="w-full">{socialpost.description}</p>
                                 </div>
                             </div> :
                                 <div className="shadow-md flex items-center py-2 h-max bg-orange-100 w-full my-2 rounded-2xl">
-                                    <div className=" w-8/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
-                                        <p className="font-bold">{socialpost.name}</p>
-                                        <p className="">{socialpost.description}</p>
+                                    <div className=" w-11/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
+                                        <p className="font-bold w-full">{socialpost.name}</p>
+                                        <p className="w-full">{socialpost.description}</p>
                                     </div>
                                 </div>
                             }
