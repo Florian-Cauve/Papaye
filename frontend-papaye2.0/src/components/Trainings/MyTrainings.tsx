@@ -4,6 +4,7 @@ import { CreateTraining, ITraining } from '../../helpers/interfaces/interfaces'
 import { addTraining, getTrainingsFromUser } from '../../helpers/TrainingsHelpers'
 import Header from '../Header/Header'
 import NavBar from '../Header/NavBar'
+import AddPicture from '../Header/AddPicture'
 
 const MyTrainings = () => {
 
@@ -11,6 +12,7 @@ const MyTrainings = () => {
     const [isAddPopUpOpen, setPopUpOpen] = useState<boolean>(false)
     const [programName, setProgramName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
+    const [pathImage, setPathImage] = useState<string>("")
 
     const currentUserId:string|null  = (localStorage.getItem("id") !== null) ? localStorage.getItem("id") : null ;
 
@@ -29,7 +31,7 @@ const MyTrainings = () => {
     }, [])
 
     const AddTraining = () => {
-        const createTraining: CreateTraining = {programName, description, owner: currentUserId}
+        const createTraining: CreateTraining = {programName, description, owner: currentUserId, pathImage}
         addTraining(createTraining).then(res => {
             setPopUpOpen(false);
             window.location.reload();
@@ -79,7 +81,8 @@ const MyTrainings = () => {
                             </div>
                             <form className="flex flex-col h-full overflow-auto">
                                 <div className="flex flex-col h-full overflow-auto">
-                                    <div className="px-4 mb-3 h-1/7">
+                                    <AddPicture type="training" setPathImage={setPathImage}/>
+                                    <div className="px-4 my-3 h-1/7">
                                         <label htmlFor="programName" className="text-sm block font-bold">NAME</label>
                                         <input type="text" name="programName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setProgramName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                                     </div>

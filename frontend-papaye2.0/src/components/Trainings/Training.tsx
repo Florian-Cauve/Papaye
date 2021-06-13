@@ -6,12 +6,15 @@ import { deleteTraining, getTrainingsById, updateTraining } from '../../helpers/
 import { addExercise, deleteExercise } from '../../helpers/ExerciseHelpers'
 import Header from '../Header/Header'
 import NavBar from '../Header/NavBar'
+import AddPicture from '../Header/AddPicture'
 
 const Training = () => {
 
     const [training, setTraining] = useState<ITraining>(defaultTraining)
     const [name, setName] = useState<string>("")
     const [description, setDescription]= useState<string>("")
+    const [pathImageTraining, setPathImageTraining] = useState<string>("")
+    const [pathImage, setPathImage] = useState<string>("")
     const [isDeletePopUpOpen, setDeletePopUpOpen] = useState<boolean>(false)
     const [isAddPopUpOpen, setAddPopUpOpen] = useState<boolean>(false)
     const [isModifyPopUpOpen, setModifyPopUpOpen] = useState<boolean>(false)
@@ -42,6 +45,7 @@ const Training = () => {
         let _training = training
         _training.programName = name;
         _training.description = description;
+        _training.pathImage = pathImageTraining;
         updateTraining(_training).then(res => {
             window.location.reload()
             setModifyPopUpOpen(false)
@@ -56,7 +60,7 @@ const Training = () => {
     }
 
     const addThisExercise = () => {
-        let exercise: CreateExercise = { name: exerciseName, description: exerciseDescription, duration: exerciseDuration, training: params.id, pathImage: "" }
+        let exercise: CreateExercise = { name: exerciseName, description: exerciseDescription, duration: exerciseDuration, training: params.id, pathImage: pathImage }
         addExercise(exercise).then(res => {
             setAddPopUpOpen(false)
             window.location.reload()
@@ -127,7 +131,7 @@ const Training = () => {
                         {training.exercises.map(exercise =>
                             <div key={exercise._id} className="p-2 flex items-center h-24 bg-white w-11/12 my-2 rounded-2xl">
                                 {exercise.pathImage ?
-                                    <img className="h-20 w-20 rounded-2xl" src={training.pathImage} alt="training" />
+                                    <img className="h-20 w-20 rounded-2xl" src={exercise.pathImage} alt="training" />
                                     :
                                     <div className="flex bg-gray-200 h-20 w-20 rounded-2xl justify-center items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,6 +180,7 @@ const Training = () => {
                             </div>
                             <form className="flex flex-col h-full overflow-auto">
                                 <div className="flex flex-col h-full overflow-auto">
+                                    <AddPicture type="exercise" setPathImage={setPathImage}/>
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="exerciseName" className="text-sm block font-bold">NAME</label>
                                         <input type="text" name="exerciseName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setExerciseName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
@@ -198,7 +203,7 @@ const Training = () => {
                 )}
                 {isModifyPopUpOpen && (
                     <section className="absolute top-0 right-0 w-screen flex h-screen items-center justify-center bg-white bg-opacity-50">
-                        <div className="h-2/5 bg-white rounded-2xl border-2 w-10/12">
+                        <div className="h-1/2 bg-white rounded-2xl border-2 w-10/12">
                             <div onClick={() => setModifyPopUpOpen(false)} className="m-2 left-4 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -207,7 +212,8 @@ const Training = () => {
                             </div>
                             <form className="flex flex-col h-full overflow-auto">
                                 <div className="flex flex-col h-full overflow-auto">
-                                    <div className="px-4 mb-3 h-1/7">
+                                    <AddPicture type="training" setPathImage={setPathImageTraining}/>
+                                    <div className="px-4 my-3 h-1/7">
                                         <label htmlFor="exerciseName" className="text-sm block font-bold">NAME</label>
                                         <input type="text" name="exerciseName" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                                     </div>
