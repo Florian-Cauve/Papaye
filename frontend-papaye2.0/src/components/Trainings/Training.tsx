@@ -183,15 +183,15 @@ const Training = () => {
                                     </select>
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="exerciseName" className="text-sm block font-bold">NAME</label>
-                                        <input type="text" name="exerciseName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setExerciseName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <input type="text" name="exerciseName" placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setExerciseName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                                     </div>
                                     <div className="px-4 mb-3 h-2/7">
                                         <label htmlFor="exerciseDescription" className="text-sm block font-bold m-1">DESCRIPTION</label>
-                                        <textarea name="exerciseDescription" placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setExerciseDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <textarea name="exerciseDescription" placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setExerciseDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                                     </div>
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="duration" className="text-sm block font-bold m-1">DURATION (SEC)</label>
-                                        <input type="number" name="duration" placeholder="duration" required onChange={(e: React.FormEvent<HTMLInputElement>) => setExerciseDuration(Number(e.currentTarget.value))} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " />
+                                        <input type="number" name="duration" placeholder="duration" required onChange={(e: React.FormEvent<HTMLInputElement>) => setExerciseDuration(Number(e.currentTarget.value))} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                                     </div>
                                     <div className="flex justify-around mt-2 h-1/8 py-2">
                                         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={addThisExercise}>Create</button>
@@ -203,7 +203,7 @@ const Training = () => {
                 )}
                 {isModifyPopUpOpen && (
                     <section className="absolute top-0 right-0 w-screen flex h-screen items-center justify-center bg-white bg-opacity-50">
-                        <div className="h-2/4 bg-white rounded-2xl border-2 w-10/12">
+                        <div className="h-2/5 bg-white rounded-2xl border-2 w-10/12">
                             <div onClick={() => setModifyPopUpOpen(false)} className="m-2 left-4 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -214,7 +214,7 @@ const Training = () => {
                                 <div className="flex flex-col h-full overflow-auto">
                                     <div className="px-4 mb-3 h-1/7">
                                         <label htmlFor="exerciseName" className="text-sm block font-bold">NAME</label>
-                                        <input type="text" name="exerciseName" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-00 " />
+                                        <input type="text" name="exerciseName" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                                     </div>
                                     <div className="px-4 mb-3 h-2/7">
                                         <label htmlFor="exerciseDescription" className="text-sm block font-bold m-1">DESCRIPTION</label>

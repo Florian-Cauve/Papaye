@@ -22,6 +22,9 @@ const DoExercise = () => {
 	const [ArrayTimeOut, changeTimeOutTable] = useState<NodeJS.Timeout[]>([])
 	const [PausePlayButtonIcon, changeIconPausePlay] = useState(faPlay)
 
+	console.log(params.id);
+	
+
 	// Initialize useEffect
 	useEffect(() => {
         getTrainingsById(params.id).then(res => {
@@ -192,7 +195,7 @@ const DoExercise = () => {
 				<div className="flex-1 w-full items-center mb-32">
 					
 					{/* Return button */}
-					<Link to={`/open_training/${params.id}`} className="w-11/12 mb-6">
+					<Link to={`/training/${params.id}`} className="w-11/12 mb-6">
 						<div className="flex-row items-center">
 							<FontAwesomeIcon icon={ faAngleLeft }/>
 							<label>Retour</label>
@@ -256,7 +259,7 @@ const DoExercise = () => {
 						{/* Stop the program */}
 						<Link
 							className="p-2 bg-red-500 rounded"
-							to={`/open_training/${params.id}`}>
+							to={`/training/${params.id}`}>
 							<label className="text-xl">Arrêter</label>
 						</Link>
 

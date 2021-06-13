@@ -48,7 +48,7 @@ const Receipe = () => {
                             </svg>
                         </div>
                     }
-                    <p className="my-3 text-xl font-bold">{receipe.name}</p>
+                    <p className="my-3 text-xl text-lime-900 font-bold">{receipe.name}</p>
                     <div className="flex items-center w-1/2 justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -71,8 +71,8 @@ const Receipe = () => {
                         </button>
                     </div>
                     <div className="flex flex-col w-full h-1/3">
-                        <p className="px-8 my-1 text-left text-green-900 font-bold">Igrédients</p>
-                        <div className="h-full p-2 bg-yellow-200 rounded-2xl flex flex-col items-center overflow-auto">
+                        <p className="px-8 my-1 text-left text-lime-900 font-bold">Igrédients</p>
+                        <div className="h-full p-2 bg-orange-100 rounded-2xl flex flex-col items-center overflow-auto">
                             {receipe.ingredients.map((ingredient, index) =>
                                 <div key={index} className="flex p-1 my-1 w-11/12 justify-between rounded-xl bg-white">
                                     <p className="px-3">{ingredient.name}</p>
@@ -83,8 +83,8 @@ const Receipe = () => {
                     </div>
 
                     <div className="flex flex-col w-full h-1/3">
-                        <p className="px-8 my-1 text-left text-green-900 font-bold">Recette</p>
-                        <div className="flex bg-yellow-200 p-5 my-1 w-full h-full justify-between rounded-xl bg-white">
+                        <p className="px-8 my-1 text-left text-lime-900 font-bold">Recette</p>
+                        <div className="flex bg-orange-100 p-5 my-1 w-full h-full justify-between rounded-xl">
                             <p className="bg-white p-4 rounded-2xl w-full text-left overflow-auto">{receipe.description}</p>
                         </div>
                     </div>

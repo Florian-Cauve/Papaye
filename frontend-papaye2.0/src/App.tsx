@@ -47,8 +47,7 @@ function App() {
             <Route path="/receipe/update/:id" component={UpdateReceipe}/>
             <Route path="/trainings" component={MyTrainings}/>
             <Route path="/training/:id" component={Training}/>
-            {/*<Route path="/open_training/:id_program" component={OpenTraining}/>*/}
-            {/*<Route path="/do_exercise/:id_program" component={DoExercise}/>*/}
+            <Route path="/do_exercise/:id" component={DoExercise}/>
             <Route path="/account" component={Profile}/>
         </Switch>
         )}
