@@ -14,11 +14,14 @@ const Login = () => {
           document.location.href = "/social";
         } else {
           localStorage.removeItem("id")
-          document.location.href = "/"
+          setPassword('')
+          alert("Username or password may be wrong !");
         }
       }).catch(err => {
         console.error("Erreur requete " + err.message + " " + err.stack)
       })
+    }else{
+      alert("Please fill all the fields !");
     }
   }
 
@@ -44,17 +47,19 @@ const Login = () => {
       {/* Connexion elements part (username et password) */}
       <form className="flex flex-col bg-orange-100 w-4/5 rounded-2xl p-5 items-center">
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
+          value={username}
           onChange={event => setUsername(event.target.value)}
           placeholder="Username" />
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="password"
+          value={password}
           onChange={event => setPassword(event.target.value)}
           placeholder="Password" />
         <div onClick={auth} className="bg-lime-900 w-3/5 rounded-full mt-10 p-2 *">
-          <button type="button" className="text-white text-center text-2xl">Connexion</button>
+          <button type="button" className="focus:outline-none text-white text-center text-2xl">Connexion</button>
         </div>
       </form>
     </div>

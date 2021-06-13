@@ -45,33 +45,33 @@ const SignUp = () => {
       {/* Register form (Username, Password, Height, Weight, Confirm Password) */}
       <div className="flex flex-col bg-orange-100 w-4/5 rounded-2xl p-2 items-center">
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
           onChange={event => setUsername(event.target.value)}
           placeholder="Username" />
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
           pattern="[0-9]*"
           onChange={event => setHeight(Number(event.target.value))}
           placeholder="Height" />
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="text"
           pattern="[0-9]*"
           onChange={event => setWeight(Number(event.target.value))}
           placeholder="Weight" />
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="password"
           onChange={event => setPassword(event.target.value)}
           placeholder="Password" />
         <input
-          className="bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
+          className="focus:outline-none bg-white w-4/5 rounded-full my-3 px-4 py-2 text-2xl *"
           type="password"
           onChange={event => setConfirmPassword(event.target.value)}
           placeholder="Confirm Password" />
-        <div onClick={confirmRegister} className="bg-lime-900 w-3/5 rounded-full mt-3 mb-1 p-2 *">
+        <div onClick={confirmRegister} className="focus:outline-none bg-lime-900 w-3/5 rounded-full mt-3 mb-1 p-2 *">
           <div className="text-white text-center text-2xl">Inscription</div>
         </div>
       </div>
