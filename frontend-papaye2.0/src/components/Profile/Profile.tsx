@@ -6,7 +6,8 @@ import {faAngleLeft, faEdit} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {getUserById, updateUser} from "../../helpers/UserHelpers";
 import Moment from "moment";
-import {IUser} from "../../helpers/interfaces/interfaces";
+import {ISocialpost, IUser} from "../../helpers/interfaces/interfaces";
+import {getSocialpostsFromUser} from "../../helpers/SocialHelpers";
 
 const Profile = () => {
     Moment.locale("fr")
@@ -23,6 +24,8 @@ const Profile = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isUpdatePopUpOpen, setUpdatePopUpOpen] = useState<boolean>(false)
     const currentUserId:string | null  = (localStorage.getItem("id") !== "") ? localStorage.getItem("id") : null;
+    const [socialposts, setSocialPost] = useState<ISocialpost[]>([])
+
 
 
     useEffect(() => {
@@ -39,9 +42,17 @@ const Profile = () => {
                 setImageURL(res.data.imageURL)
                 setnewImageURL(res.data.imageURL)
                 setIsLoading(false)
+            }).catch(err => {
+                console.error("Erreur requete " + err.message + " " + err.stack)
             })
+            getSocialpostsFromUser(currentUserId)
+                .then(res => {
+                    setSocialPost(res.data)
+                })
+                .catch(err => {
+                    console.error("Erreur requete " + err.message + " " + err.stack)
+                })
         }
-        console.log(imageURL)
     }, [])
 
     const unlogging = () => {
@@ -50,7 +61,7 @@ const Profile = () => {
     }
 
     const modifyUser = () => {
-        if(newUsername !== "" && newHeight > 0 && newWeight > 0 && currentUserId !== null){
+        if(newUsername !== "" && newHeight > 0 && newWeight > 0 && newHeight < 250 && newWeight < 250 && currentUserId !== null){
             const newUser:IUser = {
                 _id: currentUserId,
                 password: password,
@@ -111,19 +122,45 @@ const Profile = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                 }
-                                <div className="text-xl mt-2 font-bold">{username}</div>
-                                <button onClick={unlogging} className="bg-red-500 mt-2 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">
-                                    Deconnexion
-                                </button>
-                                <div className="flex flex-row mt-6 items-start w-11/12 h-12">
-                                    <div className="flex flex-col p-1 items-start bg-yellow-100 w-9/12 h-full rounded">
-                                        <div className="text-xs font-bold">Inscript depuis le {creatingDate}</div>
+                                <div className="flex flex-row">
+                                    <div className="text-xl mt-2 font-bold">{username}</div>
+                                    <button onClick={unlogging} className="mt-2 text-red-400 font-bold py-1 px-2 rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div className="flex flex-row mt-6 items-center justify-center w-11/12 h-16">
+                                    <div className="flex flex-col p-4 items-center justify-center bg-orange-100 w-9/12 h-full rounded-2xl">
+                                        <div className="text-sm font-bold">Inscript depuis le {creatingDate}</div>
                                         <div className="flex mt-1 flex-row">
-                                            <div className="text-xs font-bold">Taille : {height} cm</div>
-                                            <div className="text-xs ml-16 font-bold">Poids : {weight} kg</div>
+                                            <div className="text-sm font-bold">Taille : {height} cm</div>
+                                            <div className="text-sm ml-10 font-bold">Poids : {weight} kg</div>
                                         </div>
                                     </div>
                                 </div>
+                                <div className="text-xl mt-2 font-bold">Mes posts :</div>
+                                {(socialposts.length > 0 ?
+                                        socialposts.map(socialpost =>
+                                        <div key={socialpost._id} className=" flex-col h-29 text-left w-11/12 my-2">
+                                            <div className="shadow-md flex items-center py-2 h-max bg-orange-100 w-full my-1 rounded-2xl">
+                                                <div className=" w-8/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
+                                                    <p className="font-bold">{socialpost.name}</p>
+                                                    <p className="">{socialpost.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                    :
+                                    (
+                                        <div>
+                                            <div className="text-3xl mt-24 text-gray-300 font-bold">Aucun post</div>
+                                        </div>
+
+                                    )
+                                )}
                             </div>
                             {isUpdatePopUpOpen && (
                                 <section className="absolute top-0 right-0 w-screen flex h-screen items-center justify-center bg-white bg-opacity-50">
@@ -170,7 +207,7 @@ const Profile = () => {
                                     </div>
                                 </section>
                             )}
-                            
+
                         </section>
                         <NavBar part="account"/>
                     </>
