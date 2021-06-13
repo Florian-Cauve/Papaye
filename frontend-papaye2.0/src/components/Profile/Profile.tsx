@@ -145,7 +145,7 @@ const Profile = () => {
                                 {(socialposts.length > 0 ?
                                         socialposts.map(socialpost =>
                                         <div key={socialpost._id} className=" flex-col h-29 text-left w-11/12 my-2">
-                                            <div className="shadow-md flex items-center py-2 h-max bg-orange-100 w-full my-2 rounded-2xl">
+                                            <div className="shadow-md flex items-center py-2 h-max bg-orange-100 w-full my-1 rounded-2xl">
                                                 <div className=" w-8/12 flex flex-col iteams-center overflow-hidden pl-6 text-left">
                                                     <p className="font-bold">{socialpost.name}</p>
                                                     <p className="">{socialpost.description}</p>
