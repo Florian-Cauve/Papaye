@@ -104,12 +104,8 @@ const Profile = () => {
                     <Header />
                     <section className="flex h-screen items-center">
                         <div className="flex flex-col h-3/4 w-full items-center overflow-auto">
-                            <div className="flex justify-between items-center w-11/12 flex-row">
-                                <Link to="/" className="flex mb-3 flex-row">
-                                    <FontAwesomeIcon icon={faAngleLeft} size="2x" />
-                                    <div className="text-lg ml-2 text-black-900 font-bold">Retour</div>
-                                </Link>
-                                <div className="pl-4" onClick={() => setUpdatePopUpOpen(true)}>
+                            <div className="flex justify-end items-center w-11/12 flex-row mb-3">
+                                <div className="pl-4 " onClick={() => setUpdatePopUpOpen(true)}>
                                     <FontAwesomeIcon icon={faEdit} className="h-6 w-6" size="2x" />
                                 </div>
                             </div>

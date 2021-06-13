@@ -61,6 +61,8 @@ const Training = () => {
 
     const addThisExercise = () => {
         let exercise: CreateExercise = { name: exerciseName, description: exerciseDescription, duration: exerciseDuration, training: params.id, pathImage: pathImage }
+        console.log(exercise);
+        
         addExercise(exercise).then(res => {
             setAddPopUpOpen(false)
             window.location.reload()

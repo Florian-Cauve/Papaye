@@ -6,13 +6,13 @@ const TrainingSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: 20
+        maxlength: 50
     },
     description:{
         type: String,
         required: true,
         trim: true,
-        maxlength: 50
+        maxlength: 100
     },
     exercises: [
         {

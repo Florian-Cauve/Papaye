@@ -32,6 +32,8 @@ const MyTrainings = () => {
 
     const AddTraining = () => {
         const createTraining: CreateTraining = {programName, description, owner: currentUserId, pathImage}
+        console.log(createTraining);
+        
         addTraining(createTraining).then(res => {
             setPopUpOpen(false);
             window.location.reload();
