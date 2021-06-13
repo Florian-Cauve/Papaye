@@ -105,7 +105,7 @@ const Profile = () => {
                     <section className="flex h-screen items-center">
                         <div className="flex flex-col h-3/4 w-full items-center overflow-auto">
                             <div className="flex justify-between items-center w-11/12 flex-row">
-                                <Link to="/social" className="flex mb-3 flex-row">
+                                <Link to="/" className="flex mb-3 flex-row">
                                     <FontAwesomeIcon icon={faAngleLeft} size="2x" />
                                     <div className="text-lg ml-2 text-black-900 font-bold">Retour</div>
                                 </Link>

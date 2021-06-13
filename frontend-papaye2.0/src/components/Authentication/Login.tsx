@@ -11,7 +11,7 @@ const Login = () => {
       authenticate(username, password).then(res => {
         if (res.data.id !== undefined) {
           localStorage.setItem("id", res.data.id);
-          document.location.href = "/social";
+          document.location.href = "/";
         } else {
           localStorage.removeItem("id")
           setPassword('')

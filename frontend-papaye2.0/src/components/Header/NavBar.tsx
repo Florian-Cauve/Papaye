@@ -24,12 +24,12 @@ const NavBar = (props: IProps) => {
         <div className="w-full flex justify-between absolute bottom-0 border-t-2 border-lime-900 bg-white">
 
             {/* Bouton home/ fil d'actualité */}
-            <Link to="/social" className="flex-1 items-center py-4">
+            <Link to="/" className="flex-1 items-center py-4">
                 <FontAwesomeIcon icon={ faHome } className={selectedPart.home} size="2x"/>
             </Link>
 
             {/* Bouton pour les recherches */}
-            <Link to="/social" className="flex-1 items-center py-4">
+            <Link to="/" className="flex-1 items-center py-4">
                 <FontAwesomeIcon icon={ faSearch } className={selectedPart.search} size="2x"/>
             </Link>
 

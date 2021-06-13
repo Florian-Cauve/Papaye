@@ -23,16 +23,6 @@ function App() {
     setUserConnected(currentUserId !== null && currentUserId !== undefined);
     console.log(currentUserId)
     console.log(document.location);
-    
-    if(currentUserId != null){
-      if(document.location.pathname != "/social"){
-        document.location.href="/social"
-      }
-    }else{
-      if(document.location.pathname != "/"){
-        document.location.href="/"
-      }
-    }
   }, [])
 
   return (
@@ -46,7 +36,7 @@ function App() {
           </Switch>
         ) : (
           <Switch>
-            <Route path="/social" component={DisplayPost} />
+            <Route path="/" component={DisplayPost} />
             <Route path="/addPost" component={AddSocialPost} />
             <Route path="/receipes" component={MyReceipes} />
             <Route path="/addReceipe" component={AddReceipe} />
