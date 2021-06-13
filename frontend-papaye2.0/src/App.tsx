@@ -36,7 +36,7 @@ function App() {
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" component={DisplayPost} />
+            <Route path="/" exact component={DisplayPost} />
             <Route path="/addPost" component={AddSocialPost} />
             <Route path="/receipes" component={MyReceipes} />
             <Route path="/addReceipe" component={AddReceipe} />
