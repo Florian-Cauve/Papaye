@@ -7,6 +7,7 @@ const User = require('../models/user.model');
 // @route GET /socialpost/
 router.get('/', (req, res) => {
     SocialPost.find({})
+        .sort('-updatedAt')
         .then(socialpost => res.json(socialpost))
         .catch(err => res.status(404).json(err));
 });
