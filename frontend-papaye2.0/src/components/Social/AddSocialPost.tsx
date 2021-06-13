@@ -11,34 +11,22 @@ const AddSocialPost = () => {
 
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
-    const [userInfos, setuserInfos] = useState<IUser>({
-        creatingDate: "",
-        height: 0,
-        imageURL: "",
-        username: "",
-        weight: 0,
-        isLoading: true
-    })
+    const [userName, setuserName] = useState<string>("")
 
     useEffect(() => {
         const currentUserId:string | null  = (localStorage.getItem("id") !== "") ? localStorage.getItem("id") : null;
         if(currentUserId !== null){
-            getUserById(currentUserId).then(async res => {
-                await setuserInfos({
-                    username:res.data.username,
-                    imageURL: res.data.imageURL,
-                    height: 0,
-                    weight: 0,
-                    creatingDate: "",
-                    isLoading:false
-                })
-            })
+            getUserById(currentUserId).then(res => 
+                setuserName(
+                    res.data.username,
+                )
+            )
         }
     }, [])
 
     const closePopUp = () => {
         const owner = localStorage.getItem("id");
-        const pseudo = userInfos.username;
+        const pseudo = userName;
         const socialpost: CreateSocialpost = { pseudo, name, description, owner}
         addPost(socialpost).then(res =>
             document.location.href = "/news"
