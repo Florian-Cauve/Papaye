@@ -4,7 +4,7 @@ const passwordServices = require('../services/passwordServices')
 
 const User = require('../models/user.model');
 
-// @route POST /users/register
+// @route POST Create an User --> /users/register
 router.post('/register', (req, res) => {
     data = req.body;
     data.password = passwordServices.hash(data.password);
@@ -13,7 +13,7 @@ router.post('/register', (req, res) => {
         .catch(err => res.status(400).json({ error: 'Unable to add this user' }));
 });
 
-// @route POST /users/login
+// @route POST Login --> /users/login
 router.post('/login', (req, res) => {
     passwordServices.authenticate(req.body)
         .then(user => {

@@ -7,7 +7,7 @@ require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 8082;
 
-//Connexion to Database
+//Connexion to Database (URL in .env)
 const mongoUri = process.env.MONGO_URI
 
 mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
@@ -30,10 +30,10 @@ const authRoutes = require('./routes/authentification')
 const trainingRoutes = require('./routes/training')
 const socialRoutes = require('./routes/socialposts')
 
+app.use('/', authRoutes);
 app.use('/users', userRoutes);
 app.use('/exercises', exerciseRoutes);
 app.use('/receipes', receipeRoutes);
-app.use('/', authRoutes);
 app.use('/trainings', trainingRoutes);
 app.use('/social', socialRoutes);
 

@@ -39,7 +39,7 @@ const UserSchema = new Schema({
     socialPosts: [
         {
             type: Schema.Types.ObjectId,
-            ref: "SocialPosts"
+            ref: "SocialPost"
         }   
     ],
 }, {
