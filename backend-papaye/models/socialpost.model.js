@@ -22,4 +22,4 @@ const SocialPostSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = Receipe = mongoose.model('Socialpost', SocialPostSchema);
+module.exports = Receipe = mongoose.model('SocialPost', SocialPostSchema);
