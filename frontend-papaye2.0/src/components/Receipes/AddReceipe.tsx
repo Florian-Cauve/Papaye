@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { CreateReceipe, Ingredients } from "../../helpers/interfaces/interfaces"
 import { addReceipe } from "../../helpers/ReciepesHelpers"
+import AddPicture from "../Header/AddPicture"
 import Header from "../Header/Header"
 
 const AddReceipe = () => {
@@ -9,6 +10,7 @@ const AddReceipe = () => {
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [duration, setDuration] = useState<string>("")
+    const [pathImage, setPathImage] = useState<string>("")
     const [ingredients, setIngredients] = useState<Ingredients[]>([])
     const [ingredientName, setIngredientName] = useState<string>("")
     const [ingredientQuantity, setIngredientQuantity] = useState<string>("")
@@ -28,7 +30,7 @@ const AddReceipe = () => {
 
     const closePopUp = () => {
         const owner = localStorage.getItem("id");
-        const receipe: CreateReceipe = { name, description, duration, owner, ingredients }
+        const receipe: CreateReceipe = { name, description, duration, owner, ingredients, imageURL: pathImage }
         addReceipe(receipe).then(res =>
             document.location.href = "/receipes"
         )
@@ -46,7 +48,8 @@ const AddReceipe = () => {
                 </Link>
                 <form className="flex flex-col h-full overflow-auto">
                     <div className="flex flex-col h-full overflow-auto">
-                        <div className="px-4 mb-3 h-1/7">
+                        <AddPicture type="receipe" setPathImage={setPathImage}/>
+                        <div className="px-4 my-3 h-1/7">
                             <label htmlFor="name" className="text-sm block font-bold">NAME</label>
                             <input type="text" name="name" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-lime-900 " />
                         </div>

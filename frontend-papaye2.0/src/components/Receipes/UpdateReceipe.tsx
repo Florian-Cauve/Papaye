@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { defaultReceipe, Ingredients, IReceipe } from "../../helpers/interfaces/interfaces"
 import { getReceipesById, updateReceipe } from "../../helpers/ReciepesHelpers"
+import AddPicture from "../Header/AddPicture"
 import Header from "../Header/Header"
 
 const UpdateReceipe = () => {
@@ -10,6 +11,7 @@ const UpdateReceipe = () => {
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [duration, setDuration] = useState<string>("")
+    const [pathImage, setPathImage] = useState<string>("")
     const [ingredients, setIngredients] = useState<Ingredients[]>([])
     const [ingredientName, setIngredientName] = useState<string>("")
     const [ingredientQuantity, setIngredientQuantity] = useState<string>("")
@@ -45,6 +47,7 @@ const UpdateReceipe = () => {
         receipe.name = name;
         receipe.duration = duration;
         receipe.ingredients = ingredients;
+        receipe.imageURL = pathImage;
 
         updateReceipe(receipe).then(res =>
             document.location.href = "/receipe/" + receipe._id
@@ -63,23 +66,24 @@ const UpdateReceipe = () => {
                 </Link>
                 <form className="flex flex-col h-full overflow-auto">
                     <div className="flex flex-col h-full overflow-auto">
-                        <div className="px-4 mb-3 h-1/7">
+                        <AddPicture type="receipe" setPathImage={setPathImage}/>
+                        <div className="px-4 my-1 h-1/7">
                             <label htmlFor="name" className="text-sm block font-bold">NAME</label>
                             <input type="text" name="name" value={name} placeholder="name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                         </div>
-                        <div className="px-4 mb-3 h-2/7">
+                        <div className="px-4 mb-1 h-2/7">
                             <label htmlFor="description" className="text-sm block font-bold m-1">DESCRIPTION</label>
                             <textarea name="description" value={description} placeholder="description" required onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                         </div>
-                        <div className="px-4 mb-3 h-1/7">
+                        <div className="px-4 mb-1 h-1/7">
                             <label htmlFor="duration" className="text-sm block font-bold m-1">DURATION</label>
                             <input type="number" name="duration" value={duration} placeholder="duration" required onChange={(e: React.FormEvent<HTMLInputElement>) => setDuration(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                         </div>
-                        <div className="px-4 mb-4 h-1/7">
+                        <div className="px-4 mb-1 h-1/7">
                             <label htmlFor="ingredientName" className="text-sm block font-bold m-1 pb-2">INGREDIENT NAME</label>
                             <input type="text" name="ingredientName" value={ingredientName} placeholder="Ingredient name" required onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientName(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                         </div>
-                        <div className="px-4 pb-4 mb-4 h-1/7">
+                        <div className="px-4 pb-4 mb-1 h-1/7">
                             <label htmlFor="ingredientQuantity" className="text-sm block font-bold m-1 pb-2">INGREDIENT QUANTITY</label>
                             <input type="text" name="ingredientQuantity" value={ingredientQuantity} placeholder="Ingredient quantity" required onChange={(e: React.FormEvent<HTMLInputElement>) => setIngredientQuantity(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-green-900 " />
                         </div>
