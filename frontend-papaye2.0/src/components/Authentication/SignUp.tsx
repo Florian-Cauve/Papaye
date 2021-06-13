@@ -10,7 +10,7 @@ const SignUp = () => {
         if(username !== "" && password !== "" && confirmPassword !== ""){
             if(password === confirmPassword){
                 register(username, password, 0, 0).then(r => {
-                    document.location.href = "/";
+                    document.location.href = "/login";
                 })
             }else {
                 alert("You didn't confirm your password !");
