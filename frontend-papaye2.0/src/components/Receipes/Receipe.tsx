@@ -67,7 +67,7 @@ const Receipe = () => {
                         </button>
                     </div>
                     <div className="flex flex-col w-full h-1/3">
-                        <p className="px-8 my-1 text-left text-lime-900 font-bold">Igrédients</p>
+                        <p className="px-8 my-1 text-left text-lime-900 font-bold">Ingrédients</p>
                         <div className="h-full p-2 bg-orange-100 rounded-2xl flex flex-col items-center overflow-auto">
                             {receipe.ingredients.map((ingredient, index) =>
                                 <div key={index} className="flex p-1 my-1 w-11/12 justify-between rounded-xl bg-white">
