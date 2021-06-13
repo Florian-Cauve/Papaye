@@ -19,6 +19,7 @@ const Profile = () => {
     const [weight, setWeight] = useState(0)
     const [newWeight, setnewWeight] = useState(0)
     const [imageURL, setImageURL] = useState("")
+    const [newImageURL, setnewImageURL] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [isUpdatePopUpOpen, setUpdatePopUpOpen] = useState<boolean>(false)
     const currentUserId:string | null  = (localStorage.getItem("id") !== "") ? localStorage.getItem("id") : null;
@@ -29,16 +30,18 @@ const Profile = () => {
             getUserById(currentUserId).then(async res => {
                 setUserName(res.data.username)
                 setNewUserName(res.data.username)
-                setCreatingDate(Moment(res.data.createdAt).format("d MMM YYYY"))
+                setCreatingDate(Moment(res.data.createdAt).format("DD MMM YYYY"))
                 setPassword(res.data.password)
                 setHeight(res.data.height)
                 setnewHeight(res.data.height)
                 setWeight(res.data.weight)
                 setnewWeight(res.data.weight)
                 setImageURL(res.data.imageURL)
+                setnewImageURL(res.data.imageURL)
                 setIsLoading(false)
             })
         }
+        console.log(imageURL)
     }, [])
 
     const unlogging = () => {
@@ -52,6 +55,7 @@ const Profile = () => {
                 _id: currentUserId,
                 password: password,
                 height: newHeight,
+                imageURL: newImageURL,
                 username: newUsername,
                 weight: newWeight
             }
@@ -63,6 +67,11 @@ const Profile = () => {
         }else{
             alert("Les données ne sont pas dans le bon format, veuillez réessayer !")
         }
+    }
+
+    const addDefault = (ev: any) => {
+        ev.target.src = "error_pp.png"
+        ev.target.className = "h-40 w-40"
     }
 
     return(
@@ -93,9 +102,15 @@ const Profile = () => {
                                         <FontAwesomeIcon icon={faEdit} className="h-6 w-6" size="2x"/>
                                     </div>
                                 </div>
-                                <div>
-                                    <img className="rounded-full h-40 w-40" alt="" src={imageURL}/>
-                                </div>
+                                {imageURL ? (
+                                    <div>
+                                        <img className="rounded-full h-40 w-40" alt="" onError={addDefault} src={imageURL}/>
+                                    </div>
+                                ):
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="rounded-full h-40 w-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                }
                                 <div className="text-xl mt-2 font-bold">{username}</div>
                                 <button onClick={unlogging} className="bg-red-500 mt-2 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">
                                     Deconnexion
@@ -130,6 +145,11 @@ const Profile = () => {
                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 "/>
                                                 </div>
                                                 <div className="px-4 mb-3 h-2/7">
+                                                    <label htmlFor="imageURL"
+                                                           className="text-sm block font-bold m-1">Image (URL) : </label>
+                                                    <input type="text" value={newImageURL} name="height" placeholder={`Avant: ${(imageURL === undefined ? "Aucune" : imageURL)}`} onChange={(e: React.FormEvent<HTMLInputElement>) => setnewImageURL(e.currentTarget.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 "/>
+                                                </div>
+                                                <div className="px-4 mb-3 h-2/7">
                                                     <label htmlFor="height"
                                                            className="text-sm block font-bold m-1">Height : </label>
                                                     <input type="text" pattern="[0-9]*" value={newHeight} name="height" placeholder={`Avant: ${height}`} onChange={(e: React.FormEvent<HTMLInputElement>) => setnewHeight(Number(e.currentTarget.value))} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 "/>
@@ -142,7 +162,7 @@ const Profile = () => {
                                                 <div className="flex justify-around mt-2 h-1/8 py-2">
                                                     <button
                                                         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                        type="button" onClick={modifyUser}>Modify
+                                                        type="button" onClick={modifyUser}>Confirmer
                                                     </button>
                                                 </div>
                                             </div>
@@ -150,6 +170,7 @@ const Profile = () => {
                                     </div>
                                 </section>
                             )}
+                            
                         </section>
                         <NavBar part="account"/>
                     </>

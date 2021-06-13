@@ -10,6 +10,7 @@ export interface CreateReceipe {
 export interface IUser {
     _id:string,
     username:string,
+    imageURL: string,
     password:string,
     height: number,
     weight: number,
