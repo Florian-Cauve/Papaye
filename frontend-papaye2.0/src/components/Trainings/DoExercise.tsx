@@ -185,30 +185,35 @@ const DoExercise = () => {
 
 	return (
 
-		<section className="flex-1 items-center">
+		<section className="flex flex-col h-screen items-center justify-center">
 
 			{/* Include header*/}
 			<Header/>
 
-			<div className="flex-1 w-full">
-
-				<div className="flex-1 w-full items-center mb-32">
+				{/*<div className="w-full items-center mb-32">*/}
 					
 					{/* Return button */}
-					<Link to={`/training/${params.id}`} className="w-11/12 mb-6">
-						<div className="flex-row items-center">
-							<FontAwesomeIcon icon={ faAngleLeft }/>
-							<label>Retour</label>
-						</div>
+					<Link className="top-20 left-4 absolute flex items-center" to="/trainings">
+					    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+					    </svg>
+					    <p>Retour</p>
 					</Link>
 
-					<div className="w-10/12 items-center bg-yellow-100 rounded-lg py-10">
+					<div className="flex flex-col items-center w-10/12 h-3/4 bg-orange-100 rounded-lg py-10 mt-10">
 						
 						{/* Image of the Exercise */}
-						<img
-							className="h-48 w-48 rounded-full mb-2"
-							src= {training.exercises[currentExercise].pathImage}
-							/>
+						{ training.exercises[currentExercise].pathImage ?
+							<img
+								className="h-48 w-48 rounded-full mb-2"
+								src= {training.exercises[currentExercise].pathImage}
+								/>
+							:
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-48 w-48 rounded-full mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+							</svg>
+						}
+						
 						<label className="font-bold text-green-900 mb-10 text-2xl">{training.exercises[currentExercise].name}</label>
 
 						{/* Timer part */}
@@ -218,7 +223,7 @@ const DoExercise = () => {
 						</div>
 
 						{/* Timer button */}
-						<div className="flex-row w-3/5 justify-between pb-4">
+						<div className="flex flex-row w-3/5 justify-between mb-4">
 							
 							{/* Previous exercise */}
 							<div
@@ -226,7 +231,7 @@ const DoExercise = () => {
 								onClick={() => {
 									ChangeExercise(-1)
 								}}>
-								<FontAwesomeIcon icon={ faAngleLeft } size="2x" className="text-white"/>
+								<FontAwesomeIcon icon={ faAngleLeft } className="text-white text-4xl"/>
 							</div>
 
 							{/* Play/Pause the exercise */}
@@ -242,7 +247,7 @@ const DoExercise = () => {
 										launchChronometer()
 									}
 								}}>
-								<FontAwesomeIcon icon={PausePlayButtonIcon} size="2x" className="text-white"/>
+								<FontAwesomeIcon icon={PausePlayButtonIcon} className="text-white text-4xl"/>
 							</div>
 
 							{/* Next Exercise */}
@@ -251,7 +256,7 @@ const DoExercise = () => {
 								onClick={() => {
 									ChangeExercise(1)
 								}}>
-								<FontAwesomeIcon icon={ faAngleRight } size="2x" className="text-white"/>
+								<FontAwesomeIcon icon={ faAngleRight } className="text-white text-4xl"/>
 							</div>
 
 						</div>
@@ -264,12 +269,8 @@ const DoExercise = () => {
 						</Link>
 
 					</div>
-					
 
-				</div>
-
-
-			</div>
+				{/* </div> */}
 			
 			{/* Includ bottom NavBar */}
 			<NavBar part="sport"/>
